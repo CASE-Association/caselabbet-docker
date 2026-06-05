@@ -1,0 +1,253 @@
+---
+import Base from "/src/components/base.astro";
+import Title from "@comp/title.astro";
+import TextColumn from "/src/components/textcolumn.astro";
+import PaddedColumn from "/src/components/paddedcolumn.astro";
+import Centered from "@comp/centered.astro";
+import partsboxData from "/src/data/partsbox-export.json";
+---
+
+<Base title="Components">
+<PaddedColumn>
+    <Centered>
+        <TextColumn>
+            <Title>
+                Components
+            </Title>
+            Here you can browse the inventory of both CASE Lab and Association in Partsbox. You pay for components in the iZettle next to the component drawers.
+        </TextColumn>
+    </Centered>
+
+    <br>
+
+    <Centered>
+    <TextColumn>
+        <input id="search" placeholder="Search any field">
+        <div id="componentlist">
+            <i>Loading inventory...</i>
+            <!--{
+                partsboxData.parts.map((part)=>(
+                    <div>
+                        <h3>{part["part/name"]}</h3>
+                        <p>{part["part/description"]}</p>
+                        <hr>
+
+                    </div>
+            ))
+            }-->
+        </div>
+    </TextColumn>
+    </Centered>
+</PaddedColumn>
+
+</Base>
+
+<script>
+import { undefined } from "astro:schema";
+
+    // Load JSON from /partsbox-export.json
+    const listDiv = document.getElementById('componentlist')!;
+
+    // Set debug if URL param ?Debug exists
+    let DEBUG = new URLSearchParams(window.location.search).has('debug');
+
+    const SHEET_ONLY = 0;
+    const SHEET_ZETTLE_NOT_MATCHED = 1;
+    const SHEET_ZETTLE_MATCHED = 2;
+    const ZETTLE_ONLY = 3;
+
+
+    let componentDivs = [];
+
+    let storages = {};
+    let components = [];
+
+    let partsboxData = null;
+    fetch('/inventory.json')
+        .then(response => response.json())
+        .then(data => {
+            listDiv.innerHTML = "";
+            partsboxData = data;
+            console.log('PartsBox data loaded:', partsboxData);
+
+            for(let i = 0; i < partsboxData.length; i++){
+                let part = partsboxData[i];
+
+
+                let desc = part.description;
+                let name = part.name;
+
+                let mfg = part.mfg;
+                let mpn = part.mpn;
+                let stock = part.stock;
+                let location = part.location;
+                let price = part.price;
+                let unit = part.unit;
+                let image_url = part.image_url;
+
+
+                components.push({
+                    name: name,
+                    desc: desc,
+                    mfg: mfg,
+                    location: location,
+                    mpn: mpn,
+                    price: price,
+                    unit: unit
+                });
+
+
+                let outerDiv = document.createElement('div');
+                let headerDiv = document.createElement('div');
+
+                let detailDiv = document.createElement('div');
+                detailDiv.className = "details";
+
+                headerDiv.onclick = ()=>{
+                    outerDiv.classList.toggle("extended");
+
+                };
+                if(DEBUG){
+                    let zettlestatus = part.zettle_status;
+                    if(zettlestatus == SHEET_ZETTLE_NOT_MATCHED){
+                        name += " <span style='color: red'>NOT MATCHED IN ZETTLE</span>";
+                    }else if (zettlestatus == ZETTLE_ONLY){
+                        name += " <span style='color: blue'>ONLY IN ZETTLE</span>";
+                    }else{
+                        continue;
+                    }
+                    
+                }
+                headerDiv.innerHTML = `<h3>${name}</h3>`;
+                if(desc){
+                    headerDiv.innerHTML += `<p>${desc}</p>`;
+                }
+
+
+                let details = "";
+                if(location){
+                    details += `<p><b>Location:</b> ${location}</p>`;
+                }
+                if(mfg){
+                    details += `<p><b>MFG:</b> ${mfg}</p>`;
+                }
+                if(mpn){
+                    details += `<p><b>MPN:</b> ${mpn}</p>`;
+                }
+                if(price){
+                    let displayunit = "SEK";
+                    if(unit){
+                        displayunit = "SEK / " + unit;
+                    }
+                    details += `<p><b>Price:</b> ${price} ${displayunit}</p>`;
+                }
+                if(stock){
+                    details += `<p><b>Stock:</b> ${stock}</p>`;
+                }
+                if(image_url){
+                    details += `<p><img src="${image_url}" alt="${name}" style="max-width: 200px;"></p>`;
+                }
+                detailDiv.innerHTML = details;
+
+
+                outerDiv.appendChild(headerDiv);
+                outerDiv.appendChild(detailDiv);
+
+                listDiv.appendChild(outerDiv);
+                componentDivs.push(outerDiv);
+            }
+            let out = "";
+            for(let i = 0; i < components.length; i++){
+                let c = components[i];
+                let name = c.name || "";
+                let desc = c.desc || "";
+                let mfg = c.mfg || "";
+                let location = c.location || "";
+                let mpn = c.mpn || "";
+                let price = c.price || "";
+                out += name + "\t" + price + "\t" + location + "\t" + desc + "\t" + mfg + "\t" + mpn + "\n";
+            }
+            console.log(out);
+            //console.log(components);
+        });
+
+    document.getElementById("search")!.oninput = (e) => {
+        let query = (e.target as HTMLInputElement).value.toLowerCase();
+        console.log("Search query:", query);
+
+        for(let i = 0; i < components.length; i++){
+            let comp = components[i];
+            let matches = false;
+            for(let [_, val] of Object.entries(comp)){
+                if(val){
+                    if(val.toString().toLowerCase().includes(query)){
+                        matches = true;
+                        break;
+                    }
+                }
+            }
+            if(matches){
+                componentDivs[i].style.display = "block";
+            } else {
+                componentDivs[i].style.display = "none";
+            }
+        }
+    };
+    
+
+</script>
+
+<style>
+    #componentlist{
+        text-align: left;
+        padding: 0.5em;
+        margin-top: 1em;
+        border: 1px solid var(--grey);
+        border-radius: 5px;
+    }
+
+    #componentlist > :global( div){
+        border-bottom: 1px solid var(--grey);
+        padding: 5px;
+    }
+
+    #componentlist :global(h3){
+        margin:2px;
+    }
+    #componentlist :global(p){
+        margin:2px;
+    }
+    
+    #componentlist :global(.details ){
+        display: none;
+        padding-left: 5px;
+        border-left: 3px solid var(--case-red);
+    }
+    
+    #componentlist :global(.extended .details){
+        display: block;
+    }
+
+    #componentlist :global(h3::before){
+        display: inline-block;
+        content: "";
+        width: 0.5em;
+        height: 0.5em;
+        border-top: 3px solid black;
+        border-right: 3px solid black;
+        transform: rotate(45deg);
+        margin-right: 0.5em;
+    }
+
+    #componentlist :global(.extended h3::before){
+        transform: rotate(135deg);
+
+    }
+
+    #search{
+        width: 98%;
+        border: 1px solid var(--grey);
+        font-size: 1.2em;
+        padding: 0.3em;
+    }
+</style>

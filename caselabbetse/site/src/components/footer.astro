@@ -1,0 +1,47 @@
+---
+import FlexColumns from "@comp/flexcolumns.astro";
+import PaddedColumn from "@comp/paddedcolumn.astro";
+---
+
+<div class="footer">
+    <PaddedColumn>
+        <FlexColumns>
+            <div>
+                <h3>Useful links</h3>
+                <a href="https://booked.caselabbet.se">Booking</a><br>
+                <a href="/join">Become a member</a><br>
+                <a href="/documents">Documents</a><br>
+                <a href="https://github.com/case-association">GitHub</a><br>
+            </div>
+            <div>
+                <h3><a href="/contact">Contact</a></h3>
+            </div>
+            <div>
+                <h3>Find Us</h3>
+                <p>
+                    <b>Opening hours</b><br>
+                    Mon-Sun 07-24
+                </p>
+                <p>
+                    <b>Address</b><br>
+                    <a href="https://goo.gl/maps/FQjth1VdVST2">Elektrovägen 3<br>412 58 Göteborg</a>
+                </p>
+
+            </div>
+        </FlexColumns>
+    </PaddedColumn>
+</div>
+
+
+<style>
+    .footer{
+        background-color: var(--dark-grey);
+        color: white;
+        text-decoration-color: white;
+        line-height: 1.2;
+    }
+
+    .footer a{
+        color: var(--case-red);
+    }
+</style>

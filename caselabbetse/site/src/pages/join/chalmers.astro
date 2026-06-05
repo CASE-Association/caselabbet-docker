@@ -1,0 +1,84 @@
+---
+import Base from "@comp/base.astro";
+import Centered from "@comp/centered.astro";
+import PaddedColumn  from "@comp/paddedcolumn.astro";
+import TextColumn from "@comp/textcolumn.astro";
+import Title from "@comp/title.astro";
+import Card from "@comp/card.astro";
+import Button from "@comp/mediumbutton.astro";
+import FlexColumns from "@comp/flexcolumns.astro";
+---
+
+<Base title="Coursework Signup">
+    <PaddedColumn>
+        <Centered>
+            <TextColumn>
+                <Title>
+                    Coursework Signup
+                </Title>
+                <b>
+                    If you're going to use the CASE lab for a Chalmers course, this is where you sign up.
+                </b>
+            </TextColumn>
+        </Centered>
+    </PaddedColumn>
+
+
+    <FlexColumns>
+        <PaddedColumn>
+            <Card>
+                <div class="card">
+                    <PaddedColumn>
+                        <h2>1. Apply for access</h2>
+                        <p>Apply to Rikard by sending an email to <a href="mailto:rikard.karlsson@chalmers.se">rikard.karlsson@chalmers.se</a>, containing the following information:</p>
+                        <ul>
+                            <li>Course name</li>
+                            <li>Course code</li>
+                            <li>CID</li>
+                        </ul>
+                        <p>He will respond once you've been added to the CASE Lab Canvas course.</p>
+                    </PaddedColumn>
+                </div>
+            </Card>
+        </PaddedColumn>
+
+        <PaddedColumn>
+            <Card>
+                <div class="card">
+                    <PaddedColumn>
+                        <h2>2. Complete the quizzes</h2>
+                        Once you've joined the Canvas course you will receive more details. Make sure to do the following:
+                        <ul>
+                            <li>Create an account in Booked</li>
+                            <li>Complete the <b>Fire Safety</b> quiz</li>
+                            <li>Complete the <b>General Safety</b> quiz</li>
+                        </ul>
+                    </PaddedColumn>
+                </div>
+            </Card>
+        </PaddedColumn>
+
+        <PaddedColumn>
+            <Card>
+                <div class="card">
+                    <PaddedColumn>
+                        <h2>3. Participate in a lab safety walkthrough</h2>
+                        <p>
+                            Once the previous step is complete, you or your group can sign up for a walkthrough slot on Canvas.
+                        </p>
+                    </PaddedColumn>
+                </div>
+            </Card>
+        </PaddedColumn>
+    </FlexColumns>
+</Base>
+
+<style>
+    .Card div{
+        background-color: red;
+    }
+
+    .card{
+        border-left: 6px solid var(--case-red);
+    }
+</style>Complete the General Safety quiz

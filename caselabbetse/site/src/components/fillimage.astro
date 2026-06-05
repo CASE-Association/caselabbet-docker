@@ -1,0 +1,33 @@
+---
+/*const {url = "missingparameter.png"} = Astro.props;
+import {Image} from "astro:assets";
+const img = import("/src/assets/img/" + url);*/
+---
+
+<!-- <Image class="fillimg" src={img} alt=""> -->
+<div class="fillimg">
+    <slot/>
+</div>
+
+<style>
+    .fillimg > :global(img){
+        width: 100%;
+        height:100%;
+        object-fit: cover;
+        object-position:center;
+    }
+    .fillimg{
+        width: 100%;
+        height:100%;
+    }
+    /* .continer{ */
+    /*     object-position:center; */
+    /*     overflow: hidden; */
+    /*     height:10em; */
+    /* } */
+/* *:has(> .fillimg){ */
+/*         object-position:center; */
+/*         overflow: hidden; */
+/*         height:10em; */
+/* } */
+</style>

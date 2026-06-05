@@ -1,0 +1,49 @@
+---
+import BoardCard from "../components/boardmember.astro";
+import boardData from "/src/data/board.json";
+import Base from "/src/components/base.astro";
+import CardDisplay from "/src/components/carddisplay.astro"
+import Card from "/src/components/card.astro";
+import TextColumn from "/src/components/textcolumn.astro";
+import PaddedColumn from "/src/components/paddedcolumn.astro";
+import Centered from "@comp/centered.astro";
+import Title from "@comp/title.astro";
+---
+
+<Base title="The Board">
+
+<PaddedColumn>
+    <Centered>
+        <TextColumn>
+            <Title>The Board</Title>
+            The association is managed by the board members.
+            They do things like talking to Chalmers about what equipment the students wants, organise workshops, plan or visit events.
+            The board members change every summer and are voted in at the annual meeting (in April/May). If you are interested, keep your eyes open at our socials or come talk to us!
+        </TextColumn>
+    </Centered>
+</PaddedColumn>
+
+<PaddedColumn>
+{
+    Object.entries(boardData).map(([year, members]) => (
+        <>
+            <br/><br/><br/><br/>
+            <Centered><h1 style="font-size: 3em;">{year}</h1></Centered>
+            <CardDisplay>
+                {members.map((member) => (
+                    <Card>
+                        <BoardCard 
+                            name={member.name} 
+                            role={member.role} 
+                            contact={member.contact}
+                            tool={member.favtool} 
+                            img={member.img}
+                        />
+                    </Card>
+                ))}
+            </CardDisplay>
+        </>
+    ))
+}
+</PaddedColumn>
+</Base>

@@ -1,0 +1,102 @@
+---
+import Base from "@comp/base.astro";
+import Centered from "@comp/centered.astro";
+import PaddedColumn  from "@comp/paddedcolumn.astro";
+import TextColumn from "@comp/textcolumn.astro";
+import Title from "@comp/title.astro";
+import Card from "@comp/card.astro";
+import Button from "@comp/mediumbutton.astro";
+import FlexColumns from "@comp/flexcolumns.astro";
+---
+
+<Base title="Become a member">
+    <PaddedColumn>
+        <Centered>
+            <TextColumn>
+                <Title>
+                    Become a member
+                </Title>
+                <b>
+                    Want to become a member? Just follow the steps below and you can use the tools and components in the lab at all opening hours!
+                </b>
+            </TextColumn>
+        </Centered>
+    </PaddedColumn>
+
+
+    <FlexColumns>
+        <PaddedColumn>
+            <Card>
+                <div class="card">
+                    <PaddedColumn>
+                        <h2>1. Apply for membership</h2>
+                        <p>Apply for membership in the CASE Association by filling out the membership form.</p>
+                        <Button href="https://forms.gle/nTJ84nPwM5uXUcQXA">Membership Form</Button>
+                        <p>You will then receive an invitation link to your email to join the <b>CASE Lab Canvas course.</b></p>
+                    </PaddedColumn>
+                </div>
+            </Card>
+        </PaddedColumn>
+
+        <PaddedColumn>
+            <Card>
+                <div class="card">
+                    <PaddedColumn>
+                        <h2>2. Complete the quizzes</h2>
+                        Once you've joined the Canvas course you will receive more details. Make sure to do the following:
+                        <ul>
+                            <li>Create an account in Booked</li>
+                            <li>Complete the <b>Fire Safety</b> quiz</li>
+                            <li>Complete the <b>General Safety</b> quiz</li>
+                        </ul>
+                    </PaddedColumn>
+                </div>
+            </Card>
+        </PaddedColumn>
+
+        <PaddedColumn>
+            <Card>
+                <div class="card">
+                    <PaddedColumn>
+                        <h2>3. Do the lab walk-through!</h2>
+                        <p>
+                        Once the previous step is completed, on <b>Thursdays from 17:30*</b> you can attend the lab safety walk-through! It's a quick tour of the lab to show how to use our amenities, tools and components. You will also pay the 100SEK annual membership fee.
+                        </p>
+                        <p>
+                        <i>*With reservation for Pub Crawls, holidays and other special events.</i>
+                        </p>
+                    </PaddedColumn>
+                </div>
+            </Card>
+        </PaddedColumn>
+    </FlexColumns>
+
+
+    <PaddedColumn>
+        <Centered text_align="left">
+        <TextColumn>
+            <p>
+            Once you're a member, you can:
+            <ul>
+                <li>Use any tools that do not have special requirements</li>
+                <li>Book resources like tables and rooms. To book and use for instance 3D-printers or the laser cutter you can:</li>
+                <li>Sign up for additional courses in the Canvas calendar. Keep an eye out, they are usually published about a week before the course is held. You can find more details on the <a href="/education">Educations page</a> and on Canvas</li>
+
+            </ul>
+            <b>Note for returning members:</b> You need not complete the walkthrough and quizzes every year - just fill in the membership form, head to the lab and grab a board member. They'll register you and renew your access.
+            </p>
+
+            <p>While everyone is allowed to become a member, only current Chalmers students and employees can receive access for the Lab.</p>
+        </TextColumn></Centered>
+    </PaddedColumn>
+</Base>
+
+<style>
+    .Card div{
+        background-color: red;
+    }
+
+    .card{
+        border-left: 6px solid var(--case-red);
+    }
+</style>

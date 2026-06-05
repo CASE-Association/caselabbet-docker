@@ -1,0 +1,16 @@
+---
+const {text_align = "center"} = Astro.props;
+---
+
+
+<div class="centered"><slot/></div>
+
+<style define:vars={{text_align}}>
+    .centered{
+        text-align: var(--text_align);
+    }
+    .centered > :global(*){
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>

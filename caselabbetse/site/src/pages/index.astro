@@ -1,0 +1,169 @@
+---
+import Base from "/src/components/base.astro";
+import FlexColumns from "/src/components/flexcolumns.astro";
+import TextColumn from "/src/components/textcolumn.astro";
+import PaddedColumn from "/src/components/paddedcolumn.astro";
+import MediumButton from "@comp/mediumbutton.astro";
+import Centered from "@comp/centered.astro";
+import BlockImage from "@comp/blockimage.astro";
+import FillImage from "@comp/fillimage.astro";
+import BackgroundImgDiv from"@comp/backgroundimgdiv.astro";
+import {Image} from "astro:assets";
+import HLine from "../components/hline.astro";
+
+import LabRender from "@img/labrender.png";
+import CASE_banner from "@img/CASE-banner.png";
+import board2526_vehicles from "@img/photos/board2526_vehicles.png"
+---
+
+<Base title="Home">
+
+
+<BackgroundImgDiv url="photos/test.jpg">
+<Centered>
+<TextColumn>
+    <br><br>
+    <div style="color: white; background-color:#000a; padding:10px;">
+        <h1 style="font-family: Pirulen; color: white">C.A.S.E Lab</h1>
+        <p>
+            Chalmers Autonomous Systems and Electronics opened in October 2019.
+            All Chalmers students are welcome - through courses by day, and through the Association by evenings and weekends. Employees can also join.
+
+            The CASE Lab has both the equipment and the components you need to prototype, develop and build your next electronics project!
+
+            This website is managed by the CASE association.
+        </p>
+    </div>
+    <p class="badge" id="buildnights"><b>Build nights <a href="/build-nights" style="color:white;">most*</a> <br>Thursdays from 17:00!</b></p>
+    <p class="badge" id="aspening"><b><a href="/asp" style="color:white;">The Aspening begins!</a></b></p>
+
+    </TextColumn>
+</Centered>
+    <br><br>
+</BackgroundImgDiv>
+
+
+<div style="background-color:var(--grey)">
+    <br>
+    <Centered id="shortcuts">
+        <MediumButton href="https://booked.caselabbet.se">
+            Booking
+        </MediumButton>
+        <MediumButton href="/groupbuys">Group Buys</MediumButton>
+        <!-- <MediumButton href="/contact">Contact</MediumButton> -->
+        <MediumButton href="/components">Components</MediumButton>
+    </Centered>
+    <br>
+</div>
+
+<HLine/>
+
+<!-- About the lab -->
+<FlexColumns>
+    <div>
+        <div style="height:15em;">
+            <FillImage>
+                <Image src={LabRender} alt =""></Image>
+            </FillImage>
+        </div>
+        <PaddedColumn>
+            <Centered><h1>The Lab</h1></Centered>
+            <Centered text_align="left"><TextColumn>
+            The CASE LAB is owned by Chalmers and run by the institution of Electrical Engineering in Johanneberg. The lab is primarly for project courses like the bachelor thesis and hands on courses. It is the meeting point for students interested in electronics, embedded systems, ECAD, PCB design, AI, VR and much more.
+
+        Here you will be able to do everything from 3D-scanning a jet ski to surface mount printed circuit boards.
+            </TextColumn></Centered>
+        </PaddedColumn>
+
+    </div>
+    <div>
+        <div style="height:15em;">
+            <FillImage>
+                <Image src={board2526_vehicles} alt =""></Image>
+            </FillImage>
+        </div>
+        <PaddedColumn>
+        <Centered><h1>The Association</h1></Centered>
+            <Centered text_align="left"><TextColumn>
+            Alongside the LAB is the student driven organisation CASE Association. They make it possible for their members to use the lab outside of school hours. The association assists in running and maintaining the lab with the purpose of raising knowledge and interest for electrical/embedded systems and mechatronics.<br><br>
+            The Association is open for all Chalmers students and employees, regardless of program or interests.<br><br>
+            </TextColumn></Centered>
+        <!-- <b>Contact:</b> info@caselabbet.se -->
+        </PaddedColumn>
+
+    </div>
+</FlexColumns>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d651.2011218052108!2d11.978803429288108!3d57.687262898819675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464ff30a54790ec1%3A0xc2d1ef1eb7199754!2sCASE+lab!5e1!3m2!1sen!2sse!4v1545044970394" width="100%" height="300px" style="border:none;" allowfullscreen=""></iframe>
+
+<div class="banner-wrapper">
+    <Image src={CASE_banner} class="banner-image" alt=""></Image>
+    <Image src={CASE_banner} class="banner-image" alt=""></Image>
+    <Image src={CASE_banner} class="banner-image" alt=""></Image>
+</div>
+
+
+</Base>
+
+
+<style>
+    .banner-wrapper{
+        display:flex;
+        height: 14em;
+        width: 100%;
+        overflow:hidden;
+        
+    }
+
+    .banner-image{
+        height: 100%;
+        width: auto;
+        /* height: 14em; */
+        /* background-repeat: repeat-x; */
+        /* background-size: auto 100%; */
+        flex: 0 0 auto;
+        /* animation: scroll_banner 1s linear infinite; */
+        animation-name: scroll_banner;
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    @keyframes scroll_banner {
+        from{
+            /* background-position-x: 0%;; */
+            transform: translate3d(0,0,0);
+        }
+        to{
+            transform: translate3d(-100%,0,0);
+            /* background-position-x: 100%; */
+        }
+        
+    }
+
+    .badge{
+        color: white;
+        padding: 5px;
+        position: relative;
+        top: 3em;
+        width: max-content;
+        border-radius: 5px;
+        left: 50%;
+
+        background-color: var(--case-red);
+        border: 3px solid #eee;
+        translate: -50% -50%;
+    }
+
+    #buildnights{
+        rotate: 7deg;
+    }
+
+    #aspening{
+        rotate: -3deg;
+    }
+
+    #shortcuts{
+        transform: rotate(45deg);
+    }
+</style>

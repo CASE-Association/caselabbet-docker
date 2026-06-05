@@ -1,0 +1,64 @@
+---
+import Base from "@comp/base.astro";
+import Centered from "@comp/centered.astro";
+import PaddedColumn  from "@comp/paddedcolumn.astro";
+import TextColumn from "@comp/textcolumn.astro";
+import Title from "@comp/title.astro";
+import Card from "@comp/card.astro";
+import Button from "@comp/mediumbutton.astro";
+import FlexColumns from "@comp/flexcolumns.astro";
+---
+
+<Base title="Become a member">
+    <PaddedColumn>
+        <Centered>
+            <TextColumn>
+                <Title>
+                    Join the Lab
+                </Title>
+                <b>
+                    Want to join the community and get access to our tools and materials? Learn how below!
+                </b>
+            </TextColumn>
+
+        </Centered>
+        <Centered text_align="left">
+            <TextColumn>
+                <p>Depending on what you're planning on using the lab for, the sign-up process is slightly different:</p>
+                <table>
+                    <tr>
+                        <td>
+                            <Centered><h3>Coursework</h3></Centered>
+                            <p>For use of the lab in your Chalmers courses, sign up here! This does not include/require a membership in the Association.</p>
+                        </td>
+                        <td>
+                            <Centered><h3>Association</h3></Centered>
+                            <p>For personal projects, join the Association to gain access to the Lab, our equipment courses and our exclusive components and materials during non-school hours!</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><Centered><Button href="/join/chalmers">Coursework Signup</Button></Centered></td>
+                        <td><Centered><Button href="/join/association">Become a member!</Button></Centered></td>
+                    </tr>
+                </table>
+
+            </TextColumn>
+        </Centered>
+    </PaddedColumn>
+</Base>
+
+<style>
+    .Card div{
+        background-color: red;
+    }
+
+    .card{
+        border-left: 6px solid var(--case-red);
+    }
+
+    td{
+        width:50%;
+        vertical-align: top;
+        padding:5px;
+    }
+</style>

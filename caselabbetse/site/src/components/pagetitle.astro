@@ -1,0 +1,20 @@
+---
+const {imageurl, title} = Astro.props;
+import PaddedColumn from "/src/components/paddedcolumn.astro";
+import Title from "@comp/title.astro";
+import Centered from "@comp/centered.astro";
+import BackgroundImgDiv from"@comp/backgroundimgdiv.astro";
+---
+
+<BackgroundImgDiv url={imageurl}>
+    <PaddedColumn>
+        <Centered>
+            <div style="color:white; background-color: #000000aa; padding: 5px; border-radius: 5px; width: max-content">
+                <PaddedColumn>
+                    <Title>{title}</Title>
+                    <slot/>
+                </PaddedColumn>
+            </div>
+        </Centered>
+    </PaddedColumn>
+</BackgroundImgDiv>

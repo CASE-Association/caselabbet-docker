@@ -1,0 +1,474 @@
+{
+    "2025/2026":
+    [
+        {
+            "name": "Tim Leffler",
+            "role": "Chairman",
+            "contact": "ordforande@caselabbet.se",
+            "favtool": "spjut",
+            "img": "2025leffler.jpg"
+        },
+        {
+            "name": "Måns Lundberg",
+            "role": "Cashier",
+            "contact": "economy@caselabbet.se",
+            "favtool": "Armar",
+            "img": "2025lundberg.jpg"
+        },
+        {
+            "name": "Emil Hammar",
+            "role": "Business Contact",
+            "contact": "business@caselabbet.se",
+            "favtool": "-",
+            "img": "2025hammar.jpg"
+        },
+        {
+            "name": "Gustav Bardun",
+            "role": "PR & Event",
+            "contact": "pr@caselabbet.se",
+            "favtool": "-",
+            "img": "2025bardun.jpg"
+        },
+        {
+            "name": "Kristofer Ericsson",
+            "role": "Education Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "CASE-whiteboarden",
+            "img": "2025ericsson.jpg"
+        },
+        {
+            "name": "Eduards Abisevs",
+            "role": "Inventory & Purchases",
+            "contact": "info@caselabbet.se",
+            "favtool": "Split Keyboard",
+            "img": "2025abisevs.jpg"
+        },
+        {  
+            "name": "Lukas Hirsch",
+            "role": "Fleet Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Crimp Tool",
+            "img": "2025hirsch.jpg"
+        },
+        {
+            "name": "Karl Pansell",
+            "role": "Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Skruvstäd",
+            "img": "2025pansell.jpg"
+        },
+        {
+            "name": "Griffin Hiscoke",
+            "role": "IT",
+            "contact": "info@caselabbet.se",
+            "favtool": "Oscilloscope",
+            "img": "2025hiscoke.jpg"
+        }
+    ],
+    "2024/2025":
+    [
+        {
+            "name": "Måns Lundberg",
+            "role": "Chairman",
+            "contact": "ordforande@caselabbet.se",
+            "favtool": "iFixit-kit",
+            "img": "2024lundberg.jpg"
+        },
+        {
+            "name": "Emil Hammar",
+            "role": "Cashier",
+            "contact": "economy@caselabbet.se",
+            "favtool": "Calipers",
+            "img": "2024hammar.jpg"
+        },
+        {
+            "name": "Edith Heinemann",
+            "role": "Business Contact",
+            "contact": "business@caselabbet.se",
+            "favtool": "Pen and paper",
+            "img": "2024heinemann.jpg"
+        },
+        {
+            "name": "Griffin Hiscoke",
+            "role": "Event",
+            "contact": "info@caselabbet.se",
+            "favtool": "Finetipped soldering iron",
+            "img": "2024hiscoke.jpg"
+        },
+        {
+            "name": "Gustav Bardun",
+            "role": "Inventory & Purchases",
+            "contact": "info@caselabbet.se",
+            "favtool": "Double-sided tape",
+            "img": "2024bardun.jpg"
+        },
+        {
+            "name": "Marcus Odenmarck",
+            "role": "Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Hole-puncher",
+            "img": "2024odenmarck.jpg"
+        },
+        {
+            "name": "Johan Baumann",
+            "role": "PR",
+            "contact": "pr@caselabbet.se",
+            "favtool": "Hammer",
+            "img": "2024baumann.jpg"
+        },
+        {
+            "name": "Tim Leffler",
+            "role": "Education Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Screwdriver",
+            "img": "2024leffler.jpg"
+        }
+    ],
+    "2023/2024":
+    [
+        {
+            "name": "William Efraimsson",
+            "role": "Chairman",
+            "contact": "ordforande@caselabbet.se",
+            "favtool": "Adjustable Spanner",
+            "img": "bigfish.jpg"
+        },
+        {
+            "name": "Pontus Liljeberg",
+            "role": "Cashier",
+            "contact": "economy@caselabbet.se",
+            "favtool": "CASE-kiosken",
+            "img": "2023liljeberg.jpg"
+        },
+        {
+            "name": "Samuel Lee",
+            "role": "Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Bottle Opener",
+            "img": "2023lee.png"
+        },
+        {
+            "name": "Fredrik Sandén",
+            "role": "Business Contact",
+            "contact": "info@caselabbet.se",
+            "favtool": "Ratcheting Screwdriver",
+            "img": "2023sanden.jpg"
+        },
+        {
+            "name": "Filip Djäknegren",
+            "role": "Event",
+            "contact": "info@caselabbet.se",
+            "favtool": "Eye Measurement",
+            "img": "2022djaknegren.jpg"
+        },
+        {
+            "name": "Måns Jakobi",
+            "role": "Education Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Laser Pointer Set to Stun",
+            "img": "2023jakobi.png"
+        },
+        {
+            "name": "Filip Signäs",
+            "role": "Inventory & Purchases",
+            "contact": "info@caselabbet.se",
+            "favtool": "Angle Grinder",
+            "img": "2023signas.png"
+        },
+        {
+            "name": "Andreas Nylén",
+            "role": "PR",
+            "contact": "info@caselabbet.se",
+            "favtool": "Wrenches",
+            "img": "2022nylen.jpg"
+        },
+        {
+            "name": "Hubert Hermodsson",
+            "role": "Business Contact",
+            "contact": "info@caselabbet.se",
+            "favtool": "Spot Welder",
+            "img": "2023hermodsson.png"
+        }
+    ],
+    "2022/2023":
+    [
+        {
+            "name": "Johan Wheeler",
+            "role": "Chairman",
+            "contact": "ordforande@caselabbet.se",
+            "favtool": "Free loot",
+            "img": "2022wheeler.jpg"
+        },
+        {
+            "name": "Ida Udd",
+            "role": "Cashier",
+            "contact": "economy@caselabbet.se",
+            "favtool": "Creditcard",
+            "img": "2022udd.jpg"
+        },
+        {
+            "name": "William Efraimsson",
+            "role": "Event",
+            "contact": "info@caselabbet.se",
+            "favtool": "Calipers",
+            "img": "bigfish.jpg"
+        },
+        {
+            "name": "Nandana Suryadevara",
+            "role": "Education Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Crimping tool",
+            "img": "2022suryadevara.jpg"
+        },
+        {
+            "name": "Filip Djäknegren",
+            "role": "Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "3D printer",
+            "img": "2022djaknegren.jpg"
+        },
+        {
+            "name": "Sackarias Lunman",
+            "role": "Purchases",
+            "contact": "info@caselabbet.se",
+            "favtool": "ISBN: 9789144024165",
+            "img": "2022lunman.jpg"
+        },
+        {
+            "name": "Andreas Nylén",
+            "role": "PR",
+            "contact": "info@caselabbet.se",
+            "favtool": "Keyboard",
+            "img": "2022nylen.jpg"
+        },
+        {
+            "name": "Eli Adelhult",
+            "role": "Education Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Rust",
+            "img": "2022adelhult.jpg"
+        },
+        {
+            "name": "Pontus Liljeberg",
+            "role": "Inventory",
+            "contact": "info@caselabbet.se",
+            "favtool": "Neopixel strips",
+            "img": "2022liljeberg.jpg"
+        }
+    ],
+    "2021/2022":
+    [
+        {
+            "name": "Andreas Axén Krüger",
+            "role": "Chairman",
+            "contact": "ordforande@caselabbet.se",
+            "favtool": "Hot Glue Gun",
+            "img": "2021kruger.jpg"
+        },
+        {
+            "name": "Adam Anderson",
+            "role": "Cashier",
+            "contact": "economy@caselabbet.se",
+            "favtool": "Credit card",
+            "img": "2021anderson.jpg"
+        },
+        {
+            "name": "Ida Udd",
+            "role": "Marketing & Event",
+            "contact": "info@caselabbet.se",
+            "favtool": "Laser engraver",
+            "img": "2021udd.jpg"
+        },
+        {
+            "name": "Johan Wheeler",
+            "role": "Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Free loot",
+            "img": "2021wheeler.jpg"
+        },
+        {
+            "name": "Marcus Dahlström",
+            "role": "Education Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Dremel",
+            "img": "2021dahlstrom.jpg"
+        },
+        {
+            "name": "Daniel Quach",
+            "role": "Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Soldering iron",
+            "img": "2021quach.jpg"
+        },
+        {
+            "name": "Jonathan Nilsson",
+            "role": "IT",
+            "contact": "info@caselabbet.se",
+            "favtool": "Tweezers",
+            "img": "2021nilsson.jpg"
+        },
+        {
+            "name": "Gustav Abrahamsson",
+            "role": "Inventory & Purchases",
+            "contact": "info@caselabbet.se",
+            "favtool": "Wrench",
+            "img": "2021abrahamsson.jpg"
+        },
+        {
+            "name": "Alfred Lind-Anderton",
+            "role": "Regulations & Guidelines",
+            "contact": "info@caselabbet.se",
+            "favtool": "Hammer",
+            "img": "2021lind-anderton.jpg"
+        }
+    ],
+    "2020/2021":
+    [
+        {
+            "name": "Isak Åslund",
+            "role": "Chairman",
+            "contact": "ordforande@caselabbet.se",
+            "favtool": "CNC",
+            "img": "2020aslund.jpg"
+        },
+        {
+            "name": "Adam Anderson",
+            "role": "Cashier",
+            "contact": "economy@caselabbet.se",
+            "favtool": "Laser machine",
+            "img": "2020anderson.jpg"
+        },
+        {
+            "name": "Oskar Johansson",
+            "role": "Merch Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Glue welder",
+            "img": "2020johansson.jpg"
+        },
+        {
+            "name": "Noel Danielsson",
+            "role": "Marketing & Event",
+            "contact": "pr@caselabbet.se",
+            "favtool": "Oscilloscôp",
+            "img": "2020danielsson.jpg"
+        },
+        {
+            "name": "Stefan Larsson",
+            "role": "Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Electrical tape",
+            "img": "2020larsson.jpg"
+        },
+        {
+            "name": "Daniel Quach",
+            "role": "IT",
+            "contact": "info@caselabbet.se",
+            "favtool": "Soldering iron",
+            "img": "2020quach.jpg"
+        },
+        {
+            "name": "Andreas Axén Krüger",
+            "role": "Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Blinking LEDs",
+            "img": "2020kruger.jpg"
+        },
+        {
+            "name": "Gustav Abrahamsson",
+            "role": "Inventory & Purchases",
+            "contact": "info@caselabbet.se",
+            "favtool": "HTC Vive",
+            "img": "2020abrahamsson.jpg"
+        },
+        {
+            "name": "Alfred Lind-Anderton",
+            "role": "Board Member",
+            "contact": "info@caselabbet.se",
+            "favtool": "Multimeter",
+            "img": "2020lind-anderton.jpg"
+        }
+    ],
+    "2019/2020":
+    [
+        {
+            "name": "Isak Åslund",
+            "role": "Chairman",
+            "contact": "ordforande@caselabbet.se",
+            "favtool": "CNC",
+            "img": "2019aslund.jpg"
+        },
+        {
+            "name": "Oskar Johansson",
+            "role": "Cashier",
+            "contact": "kassor@caselabbet.se",
+            "favtool": "Glue gun",
+            "img": "2019johansson.jpg"
+        },
+        {
+            "name": "Noel Danielsson",
+            "role": "Marketing & Event",
+            "contact": "info@caselabbet.se",
+            "favtool": "Crimp tools",
+            "img": "2019danielsson.jpg"
+        },
+        {
+            "name": "Gustav Lindström",
+            "role": "Education Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Compressed air",
+            "img": "2019gustavlindstrom.jpg"
+        },
+        {
+            "name": "Viktor Lindström",
+            "role": "Inventory & Purchases",
+            "contact": "info@caselabbet.se",
+            "favtool": "Robot vacuum cleaner",
+            "img": "2019viktorlindstrom.jpg"
+        },
+        {
+            "name": "Stefan Larsson",
+            "role": "Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Soldering iron",
+            "img": "2019larsson.jpg"
+        }
+    ],
+    "2018/2019":
+    [
+        {
+            "name": "Isak Åslund",
+            "role": "Chairman",
+            "contact": "ordforande@caselabbet.se",
+            "favtool": "3D Printer",
+            "img": "2018aslund.jpg"
+        },
+        {
+            "name": "Oskar Johansson",
+            "role": "Cashier",
+            "contact": "kassor@caselabbet.se",
+            "favtool": "Hot glue",
+            "img": "2018johansson.jpg"
+        },
+        {
+            "name": "Gustav Lindström",
+            "role": "Board Member",
+            "contact": "info@caselabbet.se",
+            "favtool": "Arranged silicon",
+            "img": "2018gustavlindstrom.jpg"
+        },
+        {
+            "name": "Viktor Lindström",
+            "role": "Board Member",
+            "contact": "viktor@caselabbet.se",
+            "favtool": "Soldering iron",
+            "img": "2018viktorlindstrom.jpg"
+        },
+        {
+            "name": "Stefan Larsson",
+            "role": "Board Member",
+            "contact": "info@caselabbet.se",
+            "favtool": "Duct tape",
+            "img": "2018larsson.jpg"
+        }
+    ]
+}

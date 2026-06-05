@@ -1,0 +1,21 @@
+
+<div class="flexcolumns">
+    <slot/>
+</div>
+
+<style>
+    .flexcolumns{
+        display:flex;
+        width:100%;
+    }
+
+    @media (max-width: 50em) {
+        .flexcolumns{
+            flex-direction: column;
+        }
+    }
+
+    .flexcolumns > :global(*){
+        flex: 1;
+    }
+</style>

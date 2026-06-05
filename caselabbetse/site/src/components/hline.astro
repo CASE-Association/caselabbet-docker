@@ -1,0 +1,13 @@
+---
+const {color="var(--case-red)"} = Astro.props;
+---
+
+
+<div class="hline"></div>
+
+<style define:vars={{color}}>
+    .hline{
+        width: 100%;
+        border-top: 5px solid var(--color);
+    }
+</style>

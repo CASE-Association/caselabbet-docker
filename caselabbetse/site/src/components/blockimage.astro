@@ -1,0 +1,15 @@
+---
+const {url = "missingparameter.png"} = Astro.props;
+import {Image} from "astro:assets";
+const img = import("/src/assets/img/" + url);
+---
+
+<Image class="blockimg"src={img} alt=""></Image>
+
+<style>
+    .blockimg{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+</style>

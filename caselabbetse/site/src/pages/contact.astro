@@ -1,0 +1,56 @@
+---
+import Base from "@comp/base.astro";
+import TextColumn from "@comp/textcolumn.astro";
+import Centered from "@comp/centered.astro";
+import Title from "@comp/title.astro";
+import Underlined from "@comp/underlined.astro";
+import PaddedColumn from "@comp/paddedcolumn.astro";
+import Card from "@comp/card.astro";
+import PageTitle from "/src/components/pagetitle.astro";
+---
+
+<Base title="Contact">
+    <PageTitle imageurl="photos/test.jpg" title="Contact">
+            <TextColumn>
+                <b>Have questions, requests or just curious? As we share the lab with Chalmers, who you should contact depends on your inquiry.</b>
+            </TextColumn>
+    </PageTitle>
+    <PaddedColumn>
+        <Centered text_align="left">
+            <TextColumn>
+                <Underlined><Centered><h2>CASE Lab / Chalmers (Coursework)</h2></Centered></Underlined>
+                <PaddedColumn>
+                    If you have questions regarding use of the lab in relation to your Chalmers courses, contact the Chalmers lab manager.<br><br>
+                <div style="width:max-content">
+                    <Card>
+                        <PaddedColumn>
+                            <h2>Rikard Karlsson</h2>
+                            <b>Lab Manager</b><br>
+                            <a href="mailto:rikard.karlsson@chalmers.se">rikard.karlsson@chalmers.se</a>
+                        </PaddedColumn>
+                    </Card>
+                </div>
+                </PaddedColumn>
+            </TextColumn>
+
+            <TextColumn>
+            <Underlined><Centered><h2>CASE Association</h2></Centered></Underlined>
+                <PaddedColumn>
+                    For anything pertaining to the student-run association and use of the lab outside of courses, including:
+                    <ul>
+                        <li>Educations, workshops and use of lab materials</li>
+                        <li>Partnerships</li>
+                        <li>Manufacture of parts or other services</li>
+                    </ul>
+                    Then either contact all of the board at <a href="mailto:info@caselabbet.se">info@caselabbet.se</a> or <a href="/board">find the specific role here.</a>
+                </PaddedColumn>
+            </TextColumn>
+
+        </Centered>
+    </PaddedColumn>
+</Base>
+
+
+<style>
+
+</style>

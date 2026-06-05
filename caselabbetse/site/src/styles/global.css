@@ -1,0 +1,37 @@
+:root{
+  --case-red: #cc5979;
+  --crimson: #b63357;
+  --grey: #333;
+  --hover-gray: #ccc;
+  --light-grey: #333;
+  --dark-grey: #111;
+  --white: white;
+  --undertone: #929292;
+  --black: black;
+  --maroon-dark: #a0111B;
+}
+
+@font-face {
+  font-family: Pirulen; 
+  src: url(/fonts/pirulen_rg.ttf);
+}
+
+h1, h2{
+    /* margin: 0.3em; */
+    margin-top: 0.2em;
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: 2.3em;
+}
+
+h2 {
+    font-size:1.8em;
+}
+a{
+    color: var(--crimson);
+}
+a:visited{
+    color: var(--crimson);
+}

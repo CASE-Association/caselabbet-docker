@@ -1,0 +1,49 @@
+---
+const {name, role, contact, tool, img} = Astro.props;
+const picturePath = "/src/assets/img/boardmembers/"+img;
+import FillImage from "@comp/fillimage.astro";
+import {Image} from "astro:assets";
+const boardImages = import.meta.glob<{ default: ImageMetadata }>("/src/assets/img/boardmembers/*.{jpeg,jpg,png,gif}");
+if(!boardImages[picturePath]){
+    throw new Error("Board member image not found: " + picturePath);
+}
+---
+
+
+<!-- <FillImage class="picture"><Image src={boardImages[picturePath]()} alt=""></Image></FillImage> -->
+<Image src={boardImages[picturePath]()} alt="" class="picture"></Image>
+<div class="textcontent" style="text-align:left">
+    <h2>{name}</h2>
+    <div class="role"><b>{role}</b></div>
+    <div class="contact"><a href={"mailto:"+contact}>{contact}</a></div>
+    <div class="tool"><b>Favourite tool:</b> {tool}</div>
+</div>
+
+<style>
+    .textcontent{
+        padding: 2em;
+    }
+    .tool{
+        margin-top: 5px;
+    }
+    .role{
+        color: var(--case-red);
+    }
+    .picture{
+        object-fit: cover;
+        object-position: 50% 10%; /* I suggest having properly cropped square images instead of using this. Remove one day */
+        width: 100%;
+        aspect-ratio: 1;
+        height: auto;
+    }
+
+    .role, .contact, .tool{
+        font-size:0.9em;
+    }
+
+    h2{
+        margin-top:0px;
+        margin-bottom:0px;
+        font-size: 1.2em;
+    }
+</style>

@@ -1,0 +1,7 @@
+{
+  "name": "caselabbetse",
+  "compatibility_date": "2026-01-17", // Update to the day you deploy
+  "assets": {
+    "directory": "./dist",
+  }
+}

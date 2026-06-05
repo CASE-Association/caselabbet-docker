@@ -1,0 +1,13 @@
+<div class="carddisplay">
+    <slot/>
+</div>
+
+<style>
+    .carddisplay{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+        grid-row-gap: 2em;
+        grid-column-gap: min(2em);
+        text-align: center;
+    }
+</style>

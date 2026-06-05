@@ -1,0 +1,23 @@
+[
+    {
+        "name": "3D Printing",
+        "required_for": "3D printers",
+        "description": "Get a license to use our <b>Prusa Mk4S</b> and <b>XL printers</b> aand learn some general 3D printing know-how. About 90 minutes",
+        "interval": "Every other week"
+    },
+    {
+        "name": "Laser Cutter",
+        "description": "Get hands-on experience with the laser cutter and how to think when designing in 2D. About 2 hours",
+        "interval": "Every other week"
+    },
+    {
+        "name": "PCB & ECAD",
+        "description": "Learn KiCAD and how to design and order a basic PCB. Usually runs around 2 hours, but might take longer if there's many questions!",
+        "interval": "Once per LP"
+    },
+    {
+        "name": "Vacuum forming",
+        "description": "The vacuum former can produce terrific results for special applications. If you're interested, <a href='https://chalmers.instructure.com/courses/786/assignments/78044?module_item_id=404802'>apply here</a> with your motivation.",
+        "interval": "On request"
+    }
+]

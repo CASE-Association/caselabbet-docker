@@ -1,0 +1,43 @@
+---
+import Base from "@comp/base.astro";
+import Title from "@comp/title.astro";
+import PaddedColumn from "@comp/paddedcolumn.astro";
+import Centered from "@comp/centered.astro";
+import Card from "@comp/card.astro";
+import CardDisplay from "@comp/carddisplay.astro";
+import TextColumn from "/src/components/textcolumn.astro";
+import Button from "@comp/mediumbutton.astro";
+
+import CourseData from "/src/data/courses.json";
+---
+
+<Base title="Courses">
+<PaddedColumn>
+    <Centered>
+        <Title>Courses</Title>
+        <TextColumn>
+            <p>The CASE Association holds a number of courses for its members. Some are compulsory to use specific machines, while other are just for learning.</p>
+            <p>Details and signup in the Canvas calendar.</p>
+            <Button href="https://chalmers.instructure.com/calendar">Sign up</Button>
+        </TextColumn>
+    </Centered>
+
+    <br>
+
+    <CardDisplay>
+    {
+        CourseData.map((course) => (
+            <Card>
+                <PaddedColumn>
+                    <Centered><h2>{course.name}</h2></Centered>
+                    <p><i>Held: {course.interval}</i></p>
+                    <p set:html={course.description}/>
+                </PaddedColumn>
+            </Card>
+        ))
+    }
+    </CardDisplay>
+
+</PaddedColumn>
+
+</Base>

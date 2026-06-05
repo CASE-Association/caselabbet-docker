@@ -1,4 +1,5 @@
 services:
+  # Database for Librebooking
   db:
     image: mariadb:latest
     restart: always
@@ -14,6 +15,7 @@ services:
       MARIADB_PASSWORD: ${LB_DBUSER_PWD}
       TZ: Europe/Stockholm
 
+  # Database management reachable through tailscale
   adminer:
     image: adminer
     restart: always
@@ -24,9 +26,9 @@ services:
     # ports:
     #   - 8002:8080
 
+  # Booking service
   librebooking:
     image: caselabbet/librebooking:latest
-    # build: ./librebooking
     restart: always
     depends_on:
       - db
@@ -44,12 +46,29 @@ services:
       - LB_DEFAULT_TIMEZONE=Europe/Stockholm
     labels:
       traefik.enable: true
-      traefik.http.routers.case.rule: Host(`testing.caselabbet.se`)
+      traefik.http.routers.case.rule: Host(`staging2.caselabbet.se`)
       traefik.http.routers.case.entrypoints: websecure
       traefik.http.routers.case.tls.certresolver: letsencrypt
       traefik.http.services.case.loadbalancer.server.port: 8080
       traefik.docker.network: traefik_proxy
 
+  caselabbetse:
+    image: caselabbet/caselabbetse:latest
+    restart: always
+    networks:
+      - traefik_proxy
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    labels:
+      traefik.enable: true
+      traefik.http.routers.case.rule: Host(`staging1.caselabbet.se`)
+      traefik.http.routers.case.entrypoints: websecure
+      traefik.http.routers.case.tls.certresolver: letsencrypt
+      traefik.http.services.case.loadbalancer.server.port: 8080
+      traefik.docker.network: traefik_proxy
+
+  # Tunnel in for management
   tailscale:
     image: tailscale/tailscale:latest
     environment:
@@ -62,9 +81,13 @@ services:
       - net_raw
     restart: always
 
+
+
 volumes:
   db_data:
   lb_config:
+  caddy_data:
+  caddy_config:
 
 networks:
   traefik_proxy:

@@ -1,0 +1,116 @@
+---
+import Base from "/src/components/base.astro";
+import TextColumn from "/src/components/textcolumn.astro";
+import PaddedColumn from "/src/components/paddedcolumn.astro";
+import Title from "@comp/title.astro";
+import Centered from "@comp/centered.astro";
+---
+
+
+<Base title="FAQ">
+<PaddedColumn>
+
+<Centered><Title>
+    FAQ
+</Title></Centered>
+<Centered text_align="left">
+<TextColumn>
+    <h1>General</h1>
+    <div class="qna">
+        <h3>What do I pay for?</h3>
+        <div>
+            <p>The general rule is <b>Consumables are free to use in reasonable quantities. </b></p>
+
+            <p>This means you are allowed to use e.g. screws, nuts, tape, solder, resistors, capacitors for a project. You are however not allowed to take large amount, e.g populating multiple PCBs, then you will have to buy your own.</p>
+
+            <p>Parts such as sensors, microcontrollers, motors etc. are NOT FREE and can be bought from the CASE association via the iZettle located in the rapid prototyping room.</p>
+
+            <p>Material such as 3D printing filament och plastic sheets are paid by weight and can also be bought from the iZettle.</p>
+        </div>
+    </div>
+
+    <div class="qna">
+        <h3>What machines/equipment can I use?</h3>
+        <div>
+            <p>The following machines require a completed course to use:</p>
+                <ul>
+
+                    <li>3D Printer</li>
+                    <li>Laser engraver</li>
+                    <li>Vacuum former</li>
+                    <li>Workshop machines (drill press, band saw, bench belt sander, CNC)</li>
+                </ul>
+        </ul>
+        <p>There is a general rule when it comes to using equipment and machines: <b>Only use equipment and machines you have the proper training on and can use safely.</b></p>
+
+        <p>This means that you are allowed to use this equipment if you know how to use them:</p>
+        <ul>
+            <li>Soldering equipment</li>
+            <li>Hand tools (e.g pliers, screwdriver, hack saw)</li>
+            <li>Measurement equipment (e.g multimeter, tachometer, oscilloscope)</li>
+        </ul>
+        <p>If you unsure about how to use the equipment ask for help. As a last note, always follow the guidelines for each equipment or machine. (E.g use the fume extractor and mat when soldering.)</p>
+        </div>
+    </div>
+
+    <div class="qna">
+        <h3>When can I work on my projects?</h3>
+        <div>
+            <p>CASE Association members are allowed to work in the lab between 17-24 on Mon-Fri and 07-24 on Sat-Sun.</p>
+        </div>
+    </div>
+    <div class="qna">
+        <h3>How do I become a member?</h3>
+        <div>
+            <p><a href="/join">Here is everything you need to know!</a></p>
+        </div>
+    </div>
+</TextColumn>
+</Centered>
+</PaddedColumn>
+
+</Base>
+
+<style>
+    .qna > div{
+        display:none;
+        padding-left: 0.5em;
+        border-left: 3px solid var(--case-red);
+    }
+
+    .extended > div{
+        display:block;
+    }
+
+    h3{
+        margin-bottom: 0;
+    }
+
+    .qna > h3::after{
+        display: inline-block;
+        content: "  ";
+        width: 0.7em;
+        height: 0.7em;
+        border-top: 3px solid black;
+        border-right: 3px solid black;
+        transform: rotate(45deg);
+        margin-left: 0.3em;
+    }
+
+    .extended > h3::after{
+        transform: rotate(135deg);
+        margin-left: 0.6em;
+
+    }
+
+</style>
+
+<script>
+    let dropdowns = document.getElementsByClassName("qna");
+    for(let i = 0; i < dropdowns.length; i++){
+        dropdowns[i].onclick = () => {
+            dropdowns[i].classList.toggle("extended");
+        };
+    }
+
+</script>

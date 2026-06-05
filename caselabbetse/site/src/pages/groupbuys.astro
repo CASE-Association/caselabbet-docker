@@ -1,0 +1,45 @@
+---
+import Base from "/src/components/base.astro";
+import TextColumn from "/src/components/textcolumn.astro";
+import PaddedColumn from "/src/components/paddedcolumn.astro";
+import Title from "@comp/title.astro";
+import Centered from "@comp/centered.astro";
+import MediumButton from "@comp/mediumbutton.astro";
+import BackgroundImgDiv from"@comp/backgroundimgdiv.astro";
+import PageTitle from"/src/components/pagetitle.astro";
+import HLine from "../components/hline.astro";
+---
+<Base title="Group Buys">
+
+<PageTitle imageurl="stockphotos/pcb_black_closeup.jpg" title="Group Buys">
+
+</PageTitle>
+
+
+<PaddedColumn>
+<Centered text_align="left">
+<TextColumn>
+    <h2>JLCPCB Group Buys</h2>
+    <p>JLCPCB Group Buys are placed on sundays every even week (except during summer break). The shipping and import duties are paid by the CASE Association and members only pay for the PCB:s + VAT (25%).</p>
+
+    <p>All members can order through our form and pay by Swish. The price for 5 default 2-layer PCB in any color is only 50 SEK, though you may also place an advanced order for more options. The order is placed at 16.00 on Sundays, anything that comes in after that will be in the next order two weeks later.</p>
+    <Centered><MediumButton href="https://docs.google.com/forms/d/e/1FAIpQLSePI-QIOLmWm3q-szsUhXqVgSl5NAgDm0z-2e_pep6ksilk5w/viewform">PCB Order Form</MediumButton></Centered>
+
+    <br>
+
+    <h2>Mouser Group Buys</h2>
+    <p>Mouser group buys are placed on even weeks if the total sum is over 500 SEK for all orders, which is usually the case.</p>
+    <p>All members can order through our Google form and pay by Swish. The order is placed at 16.00 on Sundays, anything that comes in after that will be in the next order two weeks later. The components will be placed in the storage room after arrival.</p>
+    <Centered><MediumButton href="https://docs.google.com/forms/d/e/1FAIpQLScDIDg9HrnZTLw2bnIv2lM46nA1gaFXX8ZKOBaS_bxkVUvOyw/viewform">Mouser Order Form</MediumButton></Centered>
+
+    <br>
+
+    <h2>Farnell Group Buys</h2>
+    <p>We have a group buy from Farnell together with <a href="https://eta.chalmers.se/">ETA</a>. Orders are placed every sunday on odd weeks. If you order through the form, you will often get discounts on some components.</p>
+    <p>Since the payment is handled by ETA, you will get an invoice from them a couple of times per year. The components will be placed in the storage room at CASE as soon as they reach Chalmers.</p>
+    <Centered><MediumButton href="https://docs.google.com/forms/d/e/1FAIpQLSfu_vGDzn793olYzTAiJT1Cd3v3UZUiQ0iCpsV1S88od7tNwQ/viewform">Farnell Order Form</MediumButton></Centered>
+
+</TextColumn>
+</Centered>
+</PaddedColumn>
+</Base>

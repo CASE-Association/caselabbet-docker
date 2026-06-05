@@ -1,0 +1,53 @@
+---
+import Base from "/src/components/base.astro";
+import TextColumn from "/src/components/textcolumn.astro";
+import PaddedColumn from "/src/components/paddedcolumn.astro";
+import Title from "@comp/title.astro";
+import Centered from "@comp/centered.astro";
+import MediumButton from "@comp/mediumbutton.astro";
+import BackgroundImgDiv from"@comp/backgroundimgdiv.astro";
+import PageTitle from"/src/components/pagetitle.astro";
+import HLine from "../components/hline.astro";
+import AspPoster2025 from "@img/content/aspPoster2025.png"
+import {Image} from "astro:assets";
+import MediumButton from "@comp/mediumbutton.astro";
+---
+<Base title="Aspning">
+
+<PageTitle imageurl="photos/board2526_vehicles.png" title="Asp">
+
+</PageTitle>
+
+<PaddedColumn>
+    <Centered text_align="left">
+        <TextColumn>
+                <h3>Interested in joining the board? Join the Aspiration!</h3>
+                <p>You don't have to aspire to apply, and you don't have to apply because you asp. But we'd recommend doing both!</p>
+                <Centered>
+                    <MediumButton href="https://forms.gle/6hbRyFMoiuqNGqiP9">Apply for the Board!</MediumButton>
+                </Centered>
+
+                <p>Send any of your questions to <a href="mailto:casevalberedning26@protonmail.com">casevalberedning26@protonmail.com</a>.</p>
+        <ul>
+            <li><a href="/documents/2026-nomineringspolicy.pdf">Nomineringspolicy (SWE)</a></li>
+            <li><a href="/documents/2026-nomination_policy.pdf">Policy for nominations (ENG)</a></li>
+        </ul>
+        </TextColumn>
+    </Centered>
+</PaddedColumn>
+<Centered>
+<Image src={AspPoster2025} alt = "" id="poster"/>
+</Centered>
+
+
+</Base>
+
+<style>
+    #poster{
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 5px;
+    }
+</style>

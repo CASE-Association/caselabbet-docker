@@ -1,0 +1,23 @@
+---
+import PageSetup from "@comp/pagesetup.astro"
+import Header from "/src/components/header.astro"
+import Footer from "@comp/footer.astro";
+const {title} = Astro.props;
+---
+<PageSetup title={title}>
+    <Header/>
+    <div class="content">
+        <slot/>
+    </div>
+    <Footer/>
+</PageSetup>
+
+<style>
+    .content{
+        background-color: white;
+        font-size: 0.9em;
+    }
+    .content h1{
+        font-size: 1.2em;
+    }
+</style>

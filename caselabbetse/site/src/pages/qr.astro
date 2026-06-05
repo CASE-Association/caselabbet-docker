@@ -1,0 +1,82 @@
+---
+import PageSetup from "@comp/pagesetup.astro";
+
+
+import Centered from "@comp/centered.astro";
+import FillImage from "@comp/fillimage.astro";
+import PaddedColumn from "@comp/paddedcolumn.astro";
+import {Image} from "astro:assets";
+
+import BgImage from "@img/icons/Head Big White BG.png"
+
+import FbIcon from "@img/icons/facebook_dark.png"
+import InstagramLogo from "@img/icons/instagram_dark.png"
+import Globe from "@img/icons/globe_dark.png"
+import GithubLogo from "@img/icons/github_dark.png"
+import "/src/styles/global.css";
+import Base from "@comp/base.astro";
+---
+
+<Base title="Learn More">
+<div id="content">
+    <FillImage >
+        <Image id="headerImage" src={BgImage} alt="C.A.S.E Lab Logo" style="width: 100vw"/>
+    </FillImage>
+    <div style="background-color: #eee;">
+        <Centered><PaddedColumn>
+        <h1>Want to know more?</h1>
+        <Centered>
+            <table>
+                <tr>
+                    <td><Image src={Globe} alt="Website Icon"/></td>
+                    <td><h3>Visit the website</h3><a href="https://caselabbet.se">caselabbet.se</a></td>
+                </tr>
+                <tr>
+                    <td><Image src={InstagramLogo} alt="Instagram Icon"></Image></td>
+                    <td><h3>See what's going on</h3><a href="http://www.instagram.com/caselabbet">Instagram</a></td>
+                    <tr>
+                        <td><Image src={GithubLogo} alt="GitHub Icon"/></td>
+                        <td><h3>See our projects</h3><a href="https://github.com/CASE-Association">GitHub</a></td>
+                    </tr>
+                    <tr>
+                        <td><Image src={FbIcon} alt="Facebook Icon"/></td>
+                        <td><h3>Check out our events</h3><a href="https://www.facebook.com/caselabbet">Facebook</a></td>
+                    </tr>
+            </table>
+        </Centered>
+        </PaddedColumn></Centered>
+    </div>
+</div>
+</Base>
+
+<style>
+    td > img{
+        /* border: 1px solid black; */
+        /* width: 4em; */
+        width: auto;
+        height: 4em;
+        margin: 0.5em;
+        vertical-align: middle;
+    }
+
+    tr {
+
+    }
+
+    #content {
+        background-color: #eee;
+        color: var(--grey);
+    }
+
+    table{
+        padding: 1em;
+    }
+
+    h3{
+        margin: 0px;
+    }
+
+    #headerImage{
+        max-height: 50vh;
+    }
+</style>

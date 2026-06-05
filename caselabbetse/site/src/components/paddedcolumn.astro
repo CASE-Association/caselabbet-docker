@@ -1,0 +1,19 @@
+<!-- A padded div. Used to for instance to create space between a container and the inner text -->
+---
+const {padding="20px", sideonly=false} = Astro.props;
+
+const top = sideonly?"padding-top:0px;":"";
+const bottom = sideonly?"padding-bottom:0px;":"";
+
+---
+
+
+<div class="padded-column" style={"padding:" + padding + ";" + top + bottom}}>
+    <slot/>
+</div>
+
+<style>
+    /* .padded-column{ */
+    /*     padding:10px;  */
+    /* } */
+</style>
