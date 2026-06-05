@@ -49,6 +49,7 @@ services:
       traefik.http.routers.case.rule: Host(`testing.caselabbet.se`)
       traefik.http.routers.case.entrypoints: websecure
       traefik.http.routers.case.tls.certresolver: letsencrypt
+      traefik.http.routers.case.loadbalancer.server.port: 8001
 
   tailscale:
     image: tailscale/tailscale:latest
