@@ -30,8 +30,6 @@ services:
     restart: always
     depends_on:
       - db
-    ports:
-      - "8001:8080"
     networks:
       - traefik_proxy
       - default
@@ -49,7 +47,7 @@ services:
       traefik.http.routers.case.rule: Host(`testing.caselabbet.se`)
       traefik.http.routers.case.entrypoints: websecure
       traefik.http.routers.case.tls.certresolver: letsencrypt
-      traefik.http.services.case.loadbalancer.server.port: 8001
+      traefik.http.services.case.loadbalancer.server.port: 8080
       traefik.docker.network: traefik_proxy
 
   tailscale:
