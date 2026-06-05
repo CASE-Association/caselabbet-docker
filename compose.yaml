@@ -6,9 +6,6 @@ services:
     volumes: 
      - db_data:/config
     environment:
-      PUID: 1000
-      PGID: 1000
-      # MYSQL_ROOT_PASSWORD: example
       MARIADB_ROOT_PASSWORD: ${DB_ROOT_PWD}
       MARIADB_DATABASE: librebooking
       MARIADB_USER: lb_user
@@ -46,10 +43,10 @@ services:
       - LB_DEFAULT_TIMEZONE=Europe/Stockholm
     labels:
       traefik.enable: true
-      traefik.http.routers.case.rule: Host(`staging2.caselabbet.se`)
-      traefik.http.routers.case.entrypoints: websecure
-      traefik.http.routers.case.tls.certresolver: letsencrypt
-      traefik.http.services.case.loadbalancer.server.port: 8080
+      traefik.http.routers.case_booking.rule: Host(`staging2.caselabbet.se`)
+      traefik.http.routers.case_booking.entrypoints: websecure
+      traefik.http.routers.case_booking.tls.certresolver: letsencrypt
+      traefik.http.services.case_booking.loadbalancer.server.port: 8080
       traefik.docker.network: traefik_proxy
 
   caselabbetse:
@@ -62,10 +59,10 @@ services:
       - caddy_config:/config
     labels:
       traefik.enable: true
-      traefik.http.routers.case.rule: Host(`staging1.caselabbet.se`)
-      traefik.http.routers.case.entrypoints: websecure
-      traefik.http.routers.case.tls.certresolver: letsencrypt
-      traefik.http.services.case.loadbalancer.server.port: 8080
+      traefik.http.routers.case_site.rule: Host(`staging1.caselabbet.se`)
+      traefik.http.routers.case_site.entrypoints: websecure
+      traefik.http.routers.case_site.tls.certresolver: letsencrypt
+      traefik.http.services.case_site.loadbalancer.server.port: 8080
       traefik.docker.network: traefik_proxy
 
   # Tunnel in for management
