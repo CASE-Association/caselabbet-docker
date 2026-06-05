@@ -17,6 +17,10 @@ services:
   adminer:
     image: adminer
     restart: always
+    network_mode: "service:tailscale"
+    depends_on:
+      - tailscale
+      - db
     # ports:
     #   - 8002:8080
 
@@ -28,6 +32,9 @@ services:
       - db
     ports:
       - "8001:8080"
+    networks:
+      - traefik_proxy
+      - default
     volumes:
       - lb_config:/config
     environment:
@@ -37,6 +44,11 @@ services:
       - LB_DATABASE_HOSTSPEC=db
       - LB_INSTALL_PASSWORD=${LB_INSTALL_PWD}
       - LB_DEFAULT_TIMEZONE=Europe/Stockholm
+    labels:
+      traefik.enable: true
+      traefik.http.routers.case.rule: Host(`testing.caselabbet.se`)
+      traefik.http.routers.case.entrypoints: websecure
+      traefik.http.routers.case.tls.certresolver: letsencrypt
 
   tailscale:
     image: tailscale/tailscale:latest
@@ -48,6 +60,7 @@ services:
     cap_add:
       - net_admin
       - net_raw
+    restart: always
 
 volumes:
   db_data:
