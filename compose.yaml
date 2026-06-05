@@ -17,8 +17,8 @@ services:
   adminer:
     image: adminer
     restart: always
-    ports:
-      - 8002:8080
+    # ports:
+    #   - 8002:8080
 
   librebooking:
     image: caselabbet/librebooking:latest
