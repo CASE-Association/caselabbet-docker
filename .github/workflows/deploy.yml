@@ -28,7 +28,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v7
         with:
-          context: ${{ matrix.name }}
+          context: ./${{ matrix.name }}
           push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/${{ matrix.name }}:latest
 
