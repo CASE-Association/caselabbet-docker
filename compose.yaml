@@ -21,6 +21,7 @@ services:
       - 8002:8080
 
   librebooking:
+    image: caselabbet/librebooking:latest
     build: ./librebooking
     restart: always
     depends_on:
