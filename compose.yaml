@@ -84,6 +84,8 @@ services:
     image: caselabbet/inventory:latest
     volumes:
       - inventory:/app/data_out
+    environment:
+      - ZETTLE_APIKEY=${ZETTLE_APIKEY}
     restart: always
 
 
