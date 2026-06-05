@@ -63,7 +63,7 @@ import { undefined } from "astro:schema";
     let components = [];
 
     let partsboxData = null;
-    fetch('/inventory.json')
+    fetch('/inventory/inventory.json')
         .then(response => response.json())
         .then(data => {
             listDiv.innerHTML = "";

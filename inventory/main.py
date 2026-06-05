@@ -1,0 +1,221 @@
+import time
+import requests
+import json
+import csv
+import os
+import schedule
+
+SHEET_URL = "https://docs.google.com/spreadsheets/d/147HL4QCIvZX2amx6_Im6BiK4NwPTtFHxHf3mKN7k_S4/export?format=csv"
+
+CLIENTID = "b752c5a1-6c4c-4f64-a127-4e2c28cf08a2"
+
+ZETTLE_PRODUCTS_ENDPOINT = "https://products.izettle.com/organizations/self/products/v2"
+ZETTLE_INVENTORY_ENDPOINT = "https://inventory.izettle.com/v3/stock"
+APIKEY = os.environ["ZETTLE_APIKEY"]
+
+oauth_token = None
+
+def download_sheet():
+    res = requests.get(SHEET_URL)
+    if res.status_code == 200:
+        path = "data/components_raw.csv"
+        with open(path, "wb") as f:
+            f.write(res.content)
+
+def auth():
+    global oauth_token
+    res = requests.post(
+        "https://oauth.zettle.com/token",
+        data={
+            "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+            "client_id": CLIENTID,
+            "assertion": APIKEY,
+        }
+    )
+    oauth_token = res.json().get("access_token")
+
+
+
+def fetch_products():
+    headers = {
+        "Authorization": f"Bearer {oauth_token}"
+    }
+    res = requests.get(ZETTLE_PRODUCTS_ENDPOINT, headers=headers)
+    if res.status_code == 200:
+        with open("data/zettle_products.json", "w") as f:
+            f.write(res.text)
+    else:
+        print(f"Error: {res.status_code} - {res.text}")
+
+def fetch_inventory():
+    headers = {
+        "Authorization": f"Bearer {oauth_token}"
+    }
+    res = requests.get(ZETTLE_INVENTORY_ENDPOINT, headers=headers)
+    if res.status_code == 200:
+        with open("data/zettle_inventory.json", "w") as f:
+            f.write(res.text)
+    else:
+        print(f"Error: {res.status_code} - {res.text}")
+    
+
+
+def load_sheetdata():
+    with open("data/components_raw.csv", "r") as f:
+        reader = csv.DictReader(f)
+        data = [row for row in reader]
+    return data
+
+def load_zettledata():
+    with open("data/zettle_products.json", "r") as f:
+        data = f.read()
+    return json.loads(data)
+
+def load_zettleinventory():
+    with open("data/zettle_inventory.json", "r") as f:
+        data = f.read()
+    return json.loads(data)
+
+SHEET_ONLY = 0
+SHEET_ZETTLE_NOT_MATCHED = 1
+SHEET_ZETTLE_MATCHED = 2
+ZETTLE_ONLY = 3
+
+class Product:
+    def __init__(self, name, zettle_status):
+        self.name = name
+        self.unit = None
+        self.price = 0
+        self.location = None
+        self.stock = 0
+        self.zettle_status = zettle_status
+        self.image_url = None
+        self.mfg = None
+        self.mpn = None
+        self.description = None
+
+def main():
+    if not os.path.exists("data"):
+        os.makedirs("data")
+
+    update_components()
+    schedule.every().day.at("07:00").do(update_components)
+    while True:
+        schedule.run_pending()
+        time.sleep(60*60)
+
+def update_components():
+    print("Get sheet")
+    download_sheet()
+    print("Zettle auth")
+    auth()
+    print("Get products")
+    fetch_products()
+    print("Get inventory")
+    fetch_inventory()
+    
+    print("Loading data")
+    sheet = load_sheetdata()
+    zettle = load_zettledata()
+    zettle_inventory = load_zettleinventory()
+
+    zettle_products = []
+
+    for product in zettle:
+        name = product["name"]
+        unit = product["unitName"]
+        image = None
+        if "presentation" in product.keys() and product["presentation"]["imageUrl"]:
+            image = product["presentation"]["imageUrl"]
+        for variant in product.get("variants", []):
+            # if "PLA" in name:
+            #     print(variant)
+            #     print(unit)
+            uuid = variant["uuid"]
+            variantname = variant["name"]
+            price = variant["price"]
+            if price is None:
+                price = 0
+            else:
+                price = float(price["amount"])/100
+
+            nameout = name
+            if variantname:
+                nameout += f" {variantname}"
+
+            res = {
+                "name": nameout,
+                "uuid": uuid,
+                "unit": unit,
+                "price": price,
+                "image": image,
+            }
+            zettle_products.append(res)
+
+    products = []
+    for product in sheet:
+        name = product["Name"]
+        if name=="":
+            continue
+        in_zettle = product["In Zettle?"] != ""
+        if in_zettle:
+            zettle_status = SHEET_ZETTLE_NOT_MATCHED
+        else:
+            zettle_status = SHEET_ONLY
+        p = Product(name, zettle_status)
+        p.mfg = product["Manufacturer"]
+        p.mpn = product["MPN"]
+        p.description = product["Description"]
+        p.location = product["Location"]
+        products.append(p)
+
+    for zproduct in zettle_products:
+    
+
+        target_product = None
+        for product in products:
+            if product.name.strip().lower() == zproduct["name"].strip().lower():
+                product.zettle_status = SHEET_ZETTLE_MATCHED
+                target_product = product
+        if target_product is None:
+            target_product = Product(zproduct["name"], ZETTLE_ONLY)
+            products.append(target_product)
+
+        target_product.unit = zproduct["unit"]
+        target_product.price = zproduct["price"]
+        target_product.image_url = zproduct["image"]
+        for stock in zettle_inventory:
+            if stock["variantUuid"] == zproduct["uuid"]:
+                target_product.stock = stock["balance"]
+                break
+
+    zettle_only_count = 0
+    sheet_only_count = 0
+
+    for p in products:
+        if p.zettle_status == SHEET_ZETTLE_NOT_MATCHED:
+            print(f"Product in sheet not matched in zettle: {p.name}")
+            sheet_only_count += 1
+        elif p.zettle_status == ZETTLE_ONLY:
+            print(f"Product only in Zettle: {p.name}")
+            zettle_only_count += 1
+
+    print(f"Total products only in sheet: {sheet_only_count}")
+    print(f"Total products only in Zettle: {zettle_only_count}")
+
+    with open("data_out/inventory.json", "w") as f:
+        json.dump([{
+            "name": p.name,
+            "unit": p.unit,
+            "price": p.price,
+            "stock": p.stock,
+            "zettle_status": p.zettle_status,
+            "image_url": p.image_url,
+            "mfg": p.mfg,
+            "mpn": p.mpn,
+            "description": p.description,
+            "location": p.location,
+        } for p in products], f)
+
+if __name__ == "__main__":
+    main()

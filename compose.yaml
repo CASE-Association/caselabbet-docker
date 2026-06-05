@@ -57,6 +57,7 @@ services:
     volumes:
       - caddy_data:/data
       - caddy_config:/config
+      - inventory:/var/www/inventory
     labels:
       traefik.enable: true
       traefik.http.routers.case_site.rule: Host(`staging1.caselabbet.se`)
@@ -78,6 +79,13 @@ services:
       - net_raw
     restart: always
 
+  # Inventory management, puts components.json in the webserver
+  inventory:
+    image: caselabbet/inventory:latest
+    volumes:
+      - inventory:/app/data_out
+    restart: always
+
 
 
 volumes:
@@ -85,6 +93,7 @@ volumes:
   lb_config:
   caddy_data:
   caddy_config:
+  inventory:
 
 networks:
   traefik_proxy:

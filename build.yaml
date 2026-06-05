@@ -1,0 +1,12 @@
+services:
+  librebooking:
+    image: caselabbet/librebooking:latest
+    build: ./librebooking
+
+  caselabbetse:
+    image: caselabbet/caselabbetse:latest
+    build: ./caselabbetse
+
+  inventory:
+    image: caselabbet/inventory:latest
+    build: ./inventory
