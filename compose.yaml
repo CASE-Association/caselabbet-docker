@@ -22,7 +22,7 @@ services:
 
   librebooking:
     image: caselabbet/librebooking:latest
-    build: ./librebooking
+    # build: ./librebooking
     restart: always
     depends_on:
       - db
@@ -37,6 +37,17 @@ services:
       - LB_DATABASE_HOSTSPEC=db
       - LB_INSTALL_PASSWORD=${LB_INSTALL_PWD}
       - LB_DEFAULT_TIMEZONE=Europe/Stockholm
+
+  tailscale:
+    image: tailscale/tailscale:latest
+    environment:
+      - TS_AUTHKEY=${TAILSCALE_AUTHKEY}
+      - TS_STATE_DIR=/var/lib/tailscale
+    volumes:
+      - ./tailscale-state:/var/lib/tailscale
+    cap_add:
+      - net_admin
+      - net_raw
 
 volumes:
   db_data:
