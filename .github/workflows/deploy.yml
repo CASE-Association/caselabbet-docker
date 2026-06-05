@@ -16,6 +16,9 @@ jobs:
           - name: caselabbetse
           - name: inventory
     steps:
+      - steps: Checkout code
+        uses: actions/checkout@v4
+
       - name: Log in
         uses: docker/login-action@v4
         with:
