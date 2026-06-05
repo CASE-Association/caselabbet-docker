@@ -16,7 +16,7 @@ jobs:
           - name: caselabbetse
           - name: inventory
     steps:
-      - steps: Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Log in
