@@ -1,0 +1,46 @@
+services:
+  db:
+    image: mariadb:latest
+    restart: always
+    volumes: 
+     - db_data:/config
+    environment:
+      PUID: 1000
+      PGID: 1000
+      # MYSQL_ROOT_PASSWORD: example
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PWD}
+      MARIADB_DATABASE: librebooking
+      MARIADB_USER: lb_user
+      MARIADB_PASSWORD: ${LB_DBUSER_PWD}
+      TZ: Europe/Stockholm
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8002:8080
+
+  librebooking:
+    build: ./librebooking
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8001:8080"
+    volumes:
+      - lb_config:/config
+    environment:
+      - LB_DATABASE_NAME=librebooking
+      - LB_DATABASE_USER=lb_user
+      - LB_DATABASE_PASSWORD=${LB_DBUSER_PWD}
+      - LB_DATABASE_HOSTSPEC=db
+      - LB_INSTALL_PASSWORD=${LB_INSTALL_PWD}
+      - LB_DEFAULT_TIMEZONE=Europe/Stockholm
+
+volumes:
+  db_data:
+  lb_config:
+
+networks:
+  traefik_proxy:
+    external: true
