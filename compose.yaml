@@ -50,6 +50,7 @@ services:
       traefik.http.routers.case.entrypoints: websecure
       traefik.http.routers.case.tls.certresolver: letsencrypt
       traefik.http.routers.case.loadbalancer.server.port: 8001
+      traefik.docker.network: traefik_proxy
 
   tailscale:
     image: tailscale/tailscale:latest
