@@ -5,7 +5,7 @@ import csv
 import os
 import schedule
 
-SHEET_URL = "https://docs.google.com/spreadsheets/d/147HL4QCIvZX2amx6_Im6BiK4NwPTtFHxHf3mKN7k_S4/export?format=csv"
+SHEET_URL = "https://docs.google.com/spreadsheets/d/147HL4QCIvZX2amx6_Im6BiK4NwPTtFHxHf3mKN7k_S4/export?format=csv&gid=0"
 
 CLIENTID = "b752c5a1-6c4c-4f64-a127-4e2c28cf08a2"
 
@@ -18,7 +18,7 @@ oauth_token = None
 def download_sheet():
     res = requests.get(SHEET_URL)
     if res.status_code == 200:
-        path = "data/components_raw.csv"
+        path = "data/components_sheet.csv"
         with open(path, "wb") as f:
             f.write(res.content)
 
@@ -61,7 +61,7 @@ def fetch_inventory():
 
 
 def load_sheetdata():
-    with open("data/components_raw.csv", "r") as f:
+    with open("data/components_sheet.csv", "r") as f:
         reader = csv.DictReader(f)
         data = [row for row in reader]
     return data
@@ -94,9 +94,15 @@ class Product:
         self.mpn = None
         self.description = None
 
+def ensure_exists(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+
+
 def main():
-    if not os.path.exists("data"):
-        os.makedirs("data")
+    ensure_exists("data")
+    ensure_exists("data_out")
 
     update_components()
     schedule.every().day.at("07:00").do(update_components)
