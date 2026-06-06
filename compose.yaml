@@ -60,7 +60,7 @@ services:
       - inventory:/var/www/inventory
     labels:
       traefik.enable: true
-      traefik.http.routers.case_site.rule: Host(`caselabbet.se`)
+      traefik.http.routers.case_site.rule: Host(`caselabbet.se`) || Host(`www.caselabbet.se`)
       traefik.http.routers.case_site.entrypoints: websecure
       traefik.http.routers.case_site.tls.certresolver: letsencrypt
       traefik.http.services.case_site.loadbalancer.server.port: 8080
