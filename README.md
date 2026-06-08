@@ -1,41 +1,93 @@
+# CASE IT Docker stack
 
+Denna repo innehåller Docker-stacken för CASE föreningen och labbet. Alltihop deployas hos [GUD:s portainer](https://portainer.chs.se).
 
+[Documentation finns i `DOCS`-mappen.](/docs)
+
+> Om du gör ändringar i systemet, **UPPDATERA DOKUMENTATIONEN!**
 
 # Tjänster
-## Astro
-Kör caselabbet.se
+Detta är alla containrarna som körs. Mer detalj finns länkat under de respektive containrarna.
+
+## caselabbetse
+- Custom image pushed to Dockerhub
+- `/caselabbetse` in the repo
+[Full documentation](/caselabbetse)
+
+For hosting caselabbet.se. The container contains a Caddy-webserver serving a static site generated using Astro.
+
+## inventory
+- Custom image pushed to Dockerhub
+- `/inventory` in the repo
+[Full documentation](/inventory)
+
+Ett Pythonskript som sammanställer inventorylistan som används på `caselabbet.se/inventory`.
 
 ## LibreBooking
+- Lightlyl amended image, pushed to Dockerhub
+- `/librebooking` in the repo
+[Full documentation](/inventory)
 Bokningstjänsten. Mappen innehåller följande filer:
 - `config.php` är defaultconfigen som laddas 
 
 ## Adminer
-Databashanteringsverktyg. Går bara att nå via tunnel.
+- Stock image
+Database management tool. Can only be reached through the Tailscale tunnel. Used for pulling backups and doing initial setup.
 
-## nginx
-Routar trafik utifrån beroende på subdomän.
+## Tailscale
+- Stock image + Authnyckel
+VPN-tunnel för att nå containern internt. Mer detalj under Kallstart.
 
-- Lyssnar på `0.0.0.0:80`
-- caselabbet.se -> `localhost:8000`
-- booked.caselabbet.se -> `localhost:8001`
+# Secrets
 
-## Inventory
-Hämtar data från Zettle och inventory-bladet och publicerar på `caselabbet.se/components` en gång om dagen.
+## Portainer env-variables
+Found under portainer -> stack -> Edit Git settings
+
+- `ZETTLE_APIKEY` - Generate an API key on the Zettle retail account with "Products" access
+- `DB_ROOT_PWD`,`LB_DBUSER_PWD`,`LB_INSTALL_PWD` - Arbitrary randomly generated passwords, only used between services but should be secure nonetheless.
+- `TAILSCALE_AUTHKEY` - Authorisation key for adding additional devices to the tailnet. Should be set to have no expiry ^(due to budgetary concerns in the IT security department of the association) which requires adding a label to the key.
+
+## GitHub repo secrets
+Secrets and variables for deploying, found under repo settings > Secrets and Variables > Actions
+
+Secrets
+- `DOCKERHUB_TOKEN` - for pushing built images to our dockerhub account
+- `PORTAINER_PULL_WEBHOOK` - for triggering the portainer to pull & restart when the docker images are built
+
+Variables
+- `DOCKERHUB_USERNAME` = `caselabbet`
 
 
-# Interna tjänster
-Astro: 8000
-LibreBooking: 8001
-adminer: 8002
+# Cold start / Setup
+If the container has been wiped or you need to set things up from the start:
 
-# Envvariabler
-ZETTLE_APIKEY - Skaffa en API-nyckel på Zettle-kontot med "Products"-behörighet
-DB_ROOT_PWD,LB_DBUSER_PWD,LB_INSTALL_PWD - Godtyckliga starka, används bara internt
+- In portainer, add a new stack from repository. 
+- Add case-association/caselabbet-docker. 
+- Enable GitOps updates.
+- Use Webhook.
+- Copy the webhook URL and enter it under the secrets on the github repo.
+- Enable Re-pull image.
+- Set environment variables by uploading the secrets.env file located on Google Drive, or generate new secrets in accordance to the Secrets chapter.
+Deploy!
 
-# Nystart
+
+Now log into the Tailscale panel using the CASELABBET GitHub account. See if the tailscale container starts correctly. If you can’t see the container in the device list, you probably need a new Tailscale authentication token which you should set in the environment variables in Portainer. Stop and start the container afterwards. 
+
+Install Tailscale on your computer and connect to the Tailnet. 
+On the tailscale admin panel, you should see the container running. Grab the IP (eg. 100.74.9.21) and visit 100.74.9.21:8080. This will bring you to the adminer panel.
+
+We will now upload the database backup: have your backup.sql at hand.
+Begin by logging in with
+Username: lb_user
+Password is the value of LB_DBUSER_PWD in the .env file.
+Now select the librebooking database in the dropdown to the left. The database should be empty. Under the dropdown there’s a button “Import”. Upload the backup and press “Execute”. The site will hang for a minute or two, just wait. It will then say “N queries executed OK”. Booked should now be up and running!
+
+
+
 Starta dockern.
 
 Om du nu öppnar booked.caselabbet.se bör du se "Uknown Error". Detta är för att LB:s databas finns, men är tom.
 
 <Öppna tunnel>
 Logga in i adminer som LibreBooking-användaren. Öppna databasen `librebooking`, klicka "Import", ladda upp senaste backup under "File Upload". Klicka sedan "Execute" och vänta tills sidan laddar igen (kan ta någon minut). Det bör sedan säga ca "508 queries executed OK" i grönt på toppen. Nu ska Booked vara igång! Testa att logga in som Admin.
+
