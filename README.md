@@ -2,8 +2,6 @@
 
 Denna repo innehåller Docker-stacken för CASE föreningen och labbet. Alltihop deployas hos [GUD:s portainer](https://portainer.chs.se).
 
-[Documentation finns i `DOCS`-mappen.](/docs)
-
 > Om du gör ändringar i systemet, **UPPDATERA DOKUMENTATIONEN!**
 
 # Tjänster
@@ -12,6 +10,7 @@ Detta är alla containrarna som körs. Mer detalj finns länkat under de respekt
 ## caselabbetse
 - Custom image pushed to Dockerhub
 - `/caselabbetse` in the repo
+
 [Full documentation](/caselabbetse)
 
 For hosting caselabbet.se. The container contains a Caddy-webserver serving a static site generated using Astro.
@@ -19,6 +18,7 @@ For hosting caselabbet.se. The container contains a Caddy-webserver serving a st
 ## inventory
 - Custom image pushed to Dockerhub
 - `/inventory` in the repo
+
 [Full documentation](/inventory)
 
 Ett Pythonskript som sammanställer inventorylistan som används på `caselabbet.se/inventory`.
@@ -26,9 +26,10 @@ Ett Pythonskript som sammanställer inventorylistan som används på `caselabbet
 ## LibreBooking
 - Lightlyl amended image, pushed to Dockerhub
 - `/librebooking` in the repo
+
 [Full documentation](/inventory)
-Bokningstjänsten. Mappen innehåller följande filer:
-- `config.php` är defaultconfigen som laddas 
+
+Booking service for handling the resources of the lab, used by both the Association and Chalmers. Accessible on [booked.caselabbet.se](https://booked.caselabbet.se)
 
 ## Adminer
 - Stock image

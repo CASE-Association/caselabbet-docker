@@ -1,8 +1,8 @@
 # Inventory collator
-[Inventory Debug View](https://caselabbet.se/inventory?debug)
+[Inventory Debug View](https://caselabbet.se/components?debug)
 
 
-This container published inventory status on [caselabbet.se/inventory](https://caselabbet.se/inventory) by collating the [Inventory Sheet](https://docs.google.com/spreadsheets/d/147HL4QCIvZX2amx6_Im6BiK4NwPTtFHxHf3mKN7k_S4/edit?gid=0#gid=0) and Zettle. 
+This container published inventory status on [caselabbet.se/components](https://caselabbet.se/components) by collating the [Inventory Sheet](https://docs.google.com/spreadsheets/d/147HL4QCIvZX2amx6_Im6BiK4NwPTtFHxHf3mKN7k_S4/edit?gid=0#gid=0) and Zettle. 
 
 If a component exists in both Zettle and the sheet, they are merged to one entry with full information. Components are matched by (case-insensitive) name. The name of a Zettle component with variants will be `[name] [variant name]`. Components expected to be found in Zettle should be marked as such in the sheet, so that a warning can be shown on the debug page for unmatched components.
 

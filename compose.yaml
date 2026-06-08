@@ -43,7 +43,7 @@ services:
       - LB_DEFAULT_TIMEZONE=Europe/Stockholm
     labels:
       traefik.enable: true
-      traefik.http.routers.case_booking.rule: Host(`staging2.caselabbet.se`)
+      traefik.http.routers.case_booking.rule: Host(`booked.caselabbet.se`) || Host(`www.booked.caselabbet.se`)
       traefik.http.routers.case_booking.entrypoints: websecure
       traefik.http.routers.case_booking.tls.certresolver: letsencrypt
       traefik.http.services.case_booking.loadbalancer.server.port: 8080
