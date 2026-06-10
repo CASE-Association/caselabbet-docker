@@ -25,7 +25,7 @@ services:
 
   # Booking service
   librebooking:
-    image: librebooking/librebooking:5.0.3
+    image: caselabbet/librebooking:latest
     restart: always
     depends_on:
       - db

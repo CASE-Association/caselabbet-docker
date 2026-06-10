@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         include:
+          - name: librebooking
           - name: caselabbetse
           - name: inventory
     steps:
