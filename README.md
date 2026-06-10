@@ -69,6 +69,7 @@ If the container has been wiped or you need to set things up from the start:
 - Copy the webhook URL and enter it under the secrets on the github repo.
 - Enable Re-pull image.
 - Set environment variables by uploading the secrets.env file located on Google Drive, or generate new secrets in accordance to the Secrets chapter.
+
 Deploy!
 
 
@@ -77,18 +78,8 @@ Now log into the Tailscale panel using the CASELABBET GitHub account. See if the
 Install Tailscale on your computer and connect to the Tailnet. 
 On the tailscale admin panel, you should see the container running. Grab the IP (eg. 100.74.9.21) and visit 100.74.9.21:8080. This will bring you to the adminer panel.
 
-We will now upload the database backup: have your backup.sql at hand.
-Begin by logging in with
-Username: lb_user
-Password is the value of LB_DBUSER_PWD in the .env file.
+We will now upload the database backup: have your backup.sql at hand. Begin by logging in with
+- Username: lb_user
+- Password is the value of LB_DBUSER_PWD in the .env file.
+
 Now select the librebooking database in the dropdown to the left. The database should be empty. Under the dropdown there’s a button “Import”. Upload the backup and press “Execute”. The site will hang for a minute or two, just wait. It will then say “N queries executed OK”. Booked should now be up and running!
-
-
-
-Starta dockern.
-
-Om du nu öppnar booked.caselabbet.se bör du se "Uknown Error". Detta är för att LB:s databas finns, men är tom.
-
-<Öppna tunnel>
-Logga in i adminer som LibreBooking-användaren. Öppna databasen `librebooking`, klicka "Import", ladda upp senaste backup under "File Upload". Klicka sedan "Execute" och vänta tills sidan laddar igen (kan ta någon minut). Det bör sedan säga ca "508 queries executed OK" i grönt på toppen. Nu ska Booked vara igång! Testa att logga in som Admin.
-

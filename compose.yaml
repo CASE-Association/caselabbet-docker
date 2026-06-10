@@ -41,6 +41,8 @@ services:
       - LB_DATABASE_HOSTSPEC=db
       - LB_INSTALL_PASSWORD=${LB_INSTALL_PWD}
       - LB_DEFAULT_TIMEZONE=Europe/Stockholm
+      - LB_PHPMAILER_SMTP_USERNAME=${LB_SMTP_USERNAME}
+      - LB_PHPMAILER_SMTP_PASSWORD=${LB_SMTP_PASSWORD}
     labels:
       traefik.enable: true
       traefik.http.routers.case_booking.rule: Host(`booked.caselabbet.se`) || Host(`www.booked.caselabbet.se`)
