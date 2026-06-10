@@ -67,7 +67,7 @@ services:
       - LB_SECURITY_HEADERS=true
       - LB_REGISTRATION_REQUIRE_EMAIL_ACTIVATION=true
       - LB_CLEANUP_YEARS_OLD_DATA=999
-      - LB_AUTHENTICATION_REQUIRED_EMAIL_DOMAINS=
+      - LB_AUTHENTICATION_REQUIRED_EMAIL_DOMAINS='student.chalmers.se,chalmers.se'
     labels:
       traefik.enable: true
       traefik.http.routers.case_booking.rule: Host(`booked.caselabbet.se`) || Host(`www.booked.caselabbet.se`)

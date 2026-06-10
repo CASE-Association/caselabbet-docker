@@ -27,7 +27,7 @@ Ett Pythonskript som sammanställer inventorylistan som används på `caselabbet
 - Lightlyl amended image, pushed to Dockerhub
 - `/librebooking` in the repo
 
-[Full documentation](/inventory)
+[Full documentation](/librebooking)
 
 Booking service for handling the resources of the lab, used by both the Association and Chalmers. Accessible on [booked.caselabbet.se](https://booked.caselabbet.se)
 
@@ -41,12 +41,14 @@ VPN-tunnel för att nå containern internt. Mer detalj under Kallstart.
 
 # Secrets
 
-## Portainer env-variables
+## Portainer environment variables
 Found under portainer -> stack -> Edit Git settings
 
 - `ZETTLE_APIKEY` - Generate an API key on the Zettle retail account with "Products" access
 - `DB_ROOT_PWD`,`LB_DBUSER_PWD`,`LB_INSTALL_PWD` - Arbitrary randomly generated passwords, only used between services but should be secure nonetheless.
 - `TAILSCALE_AUTHKEY` - Authorisation key for adding additional devices to the tailnet. Should be set to have no expiry ^(due to budgetary concerns in the IT security department of the association) which requires adding a label to the key.
+- `LB_SMTP_USERNAME` - Email address of the Gmail account to send mail as
+- `LB_SMTP_PASSWORD` - App Password for Gmail account to send mail as (see [LibreBooking](/librebooking) docs for details) 
 
 ## GitHub repo secrets
 Secrets and variables for deploying, found under repo settings > Secrets and Variables > Actions
