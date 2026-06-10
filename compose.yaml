@@ -25,7 +25,7 @@ services:
 
   # Booking service
   librebooking:
-    image: caselabbet/librebooking:latest
+    image: librebooking/librebooking:5.0.3
     restart: always
     depends_on:
       - db
@@ -33,16 +33,45 @@ services:
       - traefik_proxy
       - default
     volumes:
-      - lb_config:/config
+      - ./librebooking/style.css:/var/www/html/Web/css/custom-style.css
+      - ./librebooking/favicon.png:/var/www/html/Web/custom-favicon.png
+      - ./librebooking/logo.png:/var/www/html/Web/img/custom-logo.png
     environment:
-      - LB_DATABASE_NAME=librebooking
-      - LB_DATABASE_USER=lb_user
       - LB_DATABASE_PASSWORD=${LB_DBUSER_PWD}
       - LB_DATABASE_HOSTSPEC=db
       - LB_INSTALL_PASSWORD=${LB_INSTALL_PWD}
       - LB_DEFAULT_TIMEZONE=Europe/Stockholm
+
+      - LB_PHPMAILER_MAILER=smtp
+      - LB_PHPMAILER_SMTP_HOST=smtp.gmail.com
+      - LB_PHPMAILER_SMTP_PORT=587
+      - LB_PHPMAILER_SMTP_SECURE=tls
       - LB_PHPMAILER_SMTP_USERNAME=${LB_SMTP_USERNAME}
       - LB_PHPMAILER_SMTP_PASSWORD=${LB_SMTP_PASSWORD}
+
+      - LB_EMAIL_DEFAULT_FROM_ADDRESS=booking@caselabbet.se
+      - LB_EMAIL_DEFAULT_FROM_NAME=CASE Booking
+
+      - LB_APP_TITLE=CASE LAB Booking
+      - LB_ADMIN_EMAIL=booking@caselabbet.se
+      - LB_ADMIN_EMAIL_NAME=CASE Booking
+      - LB_COMPANY_NAME=CASE Lab
+      - LB_COMPANY_URL=https://caselabbet.se
+      - LB_DEFAULT_LANGUAGE=en_gb
+      - LB_SCRIPT_URL=https://booked.caselabbet.se/Web
+
+      - LB_SCHEDULE_SHOW_WEEK_NUMBERS=true
+      - LB_SCHEDULE_SHOW_INACCESSIBLE_RESOURCES=false
+      - LB_SCHEDULE_RESERVATION_LABEL='{title} [{name}]'
+      - LB_RESERVATION_PREVENT_PARTICIPATION=true
+      - LB_RESERVATION_PREVENT_RECURRENCE=true
+      - LB_RESERVATION_START_TIME_CONSTRAINT=current
+      - LB_RESERVATION_CHECKIN_MINUTES_PRIOR=30
+
+      - LB_SECURITY_HEADERS=true
+      - LB_REGISTRATION_REQUIRE_EMAIL_ACTIVATION=true
+      - LB_CLEANUP_YEARS_OLD_DATA=999
+      - LB_AUTHENTICATION_REQUIRED_EMAIL_DOMAINS=
     labels:
       traefik.enable: true
       traefik.http.routers.case_booking.rule: Host(`booked.caselabbet.se`) || Host(`www.booked.caselabbet.se`)
