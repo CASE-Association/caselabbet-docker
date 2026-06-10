@@ -32,10 +32,6 @@ services:
     networks:
       - traefik_proxy
       - default
-    volumes:
-      - ./librebooking/style.css:/var/www/html/Web/css/custom-style.css
-      - ./librebooking/favicon.png:/var/www/html/Web/custom-favicon.png
-      - ./librebooking/logo.png:/var/www/html/Web/img/custom-logo.png
     environment:
       - LB_DATABASE_PASSWORD=${LB_DBUSER_PWD}
       - LB_DATABASE_HOSTSPEC=db
