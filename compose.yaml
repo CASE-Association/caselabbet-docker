@@ -39,7 +39,7 @@ services:
       - LB_DEFAULT_TIMEZONE=Europe/Stockholm
 
       - LB_PHPMAILER_MAILER=smtp
-      - LB_PHPMAILER_SMTP_HOST=smtp-relay.gmail.com
+      - LB_PHPMAILER_SMTP_HOST=smtp.gmail.com
       - LB_PHPMAILER_SMTP_PORT=587
       - LB_PHPMAILER_SMTP_SECURE=tls
       - LB_PHPMAILER_SMTP_USERNAME=${LB_SMTP_USERNAME}
