@@ -1,4 +1,63 @@
 {
+    "2026/2027":
+    [
+        {
+            "name": "Karl Pansell",
+            "role": "Chairman",
+            "contact": "ordforande@caselabbet.se",
+            "favtool": "-",
+            "img": "2026pansell.jpg"
+        },
+        {
+            "name": "Jonathan Robertsson",
+            "role": "Cashier",
+            "contact": "economy@caselabbet.se",
+            "favtool": "3D Printer",
+            "img": "2026robertsson.jpg"
+        },
+        {
+            "name": "Albin Tallgren",
+            "role": "Business Contact",
+            "contact": "business@caselabbet.se",
+            "favtool": "Hot glue gun 😳",
+            "img": "2026tallgren.jpg"
+        },
+        {
+            "name": "Ferdy Molin",
+            "role": "PR & Event",
+            "contact": "pr@caselabbet.se",
+            "favtool": "Vinkelhake 🥺",
+            "img": "2026molin.jpg"
+        },
+        {
+            "name": "Viggo Malvenius",
+            "role": "Education Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Mortel",
+            "img": "2026malvenius.jpg"
+        },
+        {
+            "name": "Eduards Abisevs",
+            "role": "Inventory & Purchases",
+            "contact": "info@caselabbet.se",
+            "favtool": "A Terminal 🤓",
+            "img": "2026abisevs.jpg"
+        },
+        {
+            "name": "Philip Karlsson",
+            "role": "Fleet Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "-",
+            "img": "2026karlsson.jpg"
+        },
+        {
+            "name": "Erik Holmström",
+            "role": "IT & Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "Rivet gun 😎",
+            "img": "2026holmstroem.jpg"
+        }
+    ],
     "2025/2026":
     [
         {

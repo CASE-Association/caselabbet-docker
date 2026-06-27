@@ -4,8 +4,8 @@
   "exclude": ["dist"],
   "compilerOptions": {
       "paths": {
-          "@comp/*": ["/src/components/*"],
-          "@img/*": ["/src/assets/img/*"]
+          "@comp/*": ["./src/components/*"],
+          "@img/*": ["./src/assets/img/*"]
       }
   }
 }
