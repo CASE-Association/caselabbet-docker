@@ -1,5 +1,6 @@
 ---
 const {name, role, contact, tool, img} = Astro.props;
+const toolOrAura = tool && typeof tool === 'string' && tool.toLowerCase().includes('galen') ? 'Aura' : 'Favourite tool'; /*Fix so that Karl can have aura instead of a tool (self proclaimed ego move), if removed in future also change how the tool is displayed below.*/ 
 const picturePath = "/src/assets/img/boardmembers/"+img;
 import FillImage from "@comp/fillimage.astro";
 import {Image} from "astro:assets";
@@ -16,7 +17,7 @@ if(!boardImages[picturePath]){
     <h2>{name}</h2>
     <div class="role"><b>{role}</b></div>
     <div class="contact"><a href={"mailto:"+contact}>{contact}</a></div>
-    <div class="tool"><b>Favourite tool:</b> {tool}</div>
+    <div class="tool"><b>{toolOrAura}:</b> {tool}</div>
 </div>
 
 <style>
