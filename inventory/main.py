@@ -5,7 +5,9 @@ import csv
 import os
 import schedule
 
-SHEET_URL = "https://docs.google.com/spreadsheets/d/147HL4QCIvZX2amx6_Im6BiK4NwPTtFHxHf3mKN7k_S4/export?format=csv&gid=0"
+SHEET_BASE_URL = "https://docs.google.com/spreadsheets/d/147HL4QCIvZX2amx6_Im6BiK4NwPTtFHxHf3mKN7k_S4"
+SHEET_ID = "427318605"
+SHEET_URL = f"{SHEET_BASE_URL}/export?format=csv&gid={SHEET_ID}"
 
 CLIENTID = "b752c5a1-6c4c-4f64-a127-4e2c28cf08a2"
 
@@ -87,12 +89,15 @@ class Product:
         self.unit = None
         self.price = 0
         self.location = None
+        self.category = None # Like Microcontrollers, Sensor etc
         self.stock = 0
         self.zettle_status = zettle_status
         self.image_url = None
         self.mfg = None
         self.mpn = None
         self.description = None
+        self.datasheet = None
+        self.extra_link = None
 
 def ensure_exists(path):
     if not os.path.exists(path):
@@ -105,6 +110,7 @@ def main():
     ensure_exists("data_out")
 
     update_components()
+    print("Scheduled next pull at 07:00")
     schedule.every().day.at("07:00").do(update_components)
     while True:
         schedule.run_pending()
@@ -162,6 +168,9 @@ def update_components():
     for product in sheet:
         name = product["Name"]
         if name=="":
+            # Was a workaround became a feature!
+            # if name column left blank one can write whatever one wants in
+            # other columns ;) Clever eh? Nice Griffin.
             continue
         in_zettle = product["In Zettle?"] != ""
         if in_zettle:
@@ -173,6 +182,9 @@ def update_components():
         p.mpn = product["MPN"]
         p.description = product["Description"]
         p.location = product["Location"]
+        p.category = product["Category"]
+        p.datasheet = product["Datasheet"]
+        p.extra_link = product["ExtraLink"]
         products.append(p)
 
     for zproduct in zettle_products:
@@ -221,6 +233,9 @@ def update_components():
             "mpn": p.mpn,
             "description": p.description,
             "location": p.location,
+            "category": p.category,
+            "datasheet": p.datasheet,
+            "extra_link": p.extra_link,
         } for p in products], f)
 
 if __name__ == "__main__":

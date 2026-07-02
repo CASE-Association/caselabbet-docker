@@ -11,3 +11,6 @@ wheels/
 
 data/
 data_out/
+
+# env file
+.env

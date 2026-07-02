@@ -84,7 +84,9 @@ import { undefined } from "astro:schema";
                 let price = part.price;
                 let unit = part.unit;
                 let image_url = part.image_url;
-
+                let datasheet = part.datasheet;
+                let extra_link = part.extra_link;
+		let category = part.category;
 
                 components.push({
                     name: name,
@@ -93,7 +95,10 @@ import { undefined } from "astro:schema";
                     location: location,
                     mpn: mpn,
                     price: price,
-                    unit: unit
+                    unit: unit,
+                    datasheet: datasheet,
+		    extra_link: extra_link,
+		    category: category
                 });
 
 
@@ -125,14 +130,29 @@ import { undefined } from "astro:schema";
 
 
                 let details = "";
+		// Build links as one contiguues list
+		const links = [];
+		if (datasheet) {
+		    links.push(`<a href="${datasheet}" target="_blank" rel="noopener noreferrer">Datasheet</a>`);
+		}
+		if (extra_link) {
+		    links.push(`<a href="${extra_link}" target="_blank" rel="noopener noreferrer">Google Docs</a>`);
+		}
+
                 if(location){
                     details += `<p><b>Location:</b> ${location}</p>`;
+                }
+                if(category){
+                    details += `<p><b>Category:</b> ${category}</p>`;
                 }
                 if(mfg){
                     details += `<p><b>MFG:</b> ${mfg}</p>`;
                 }
                 if(mpn){
                     details += `<p><b>MPN:</b> ${mpn}</p>`;
+                }
+		if(links.length > 0){
+		    details += `<p><b>Links:</b> ${links.join(", ")}</p>`;
                 }
                 if(price){
                     let displayunit = "SEK";
