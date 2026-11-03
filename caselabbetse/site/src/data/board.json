@@ -52,10 +52,17 @@
         },
         {
             "name": "Erik Holmström",
-            "role": "IT & Project Manager",
+            "role": "IT",
             "contact": "info@caselabbet.se",
             "favtool": "Lasers",
             "img": "2026holmstroem.jpg"
+        },
+        {
+            "name": "Kent Quach",
+            "role": "Project Manager",
+            "contact": "info@caselabbet.se",
+            "favtool": "TBD",
+            "img": "defaultPFP.png"
         }
     ],
     "2025/2026":
